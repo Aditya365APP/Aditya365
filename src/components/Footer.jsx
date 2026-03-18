@@ -43,8 +43,8 @@ export default function Footer() {
             {/* Brand */}
             <div className="lg:col-span-2 space-y-6">
               <Link to="/" className="flex items-center gap-3 group">
-                <div className="w-12 h-12 rounded-xl glass border border-white/10 flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-500">
-                  <img src="/aditya_logo.jpg" alt="Aditya 365" className="w-full h-full object-contain" />
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden glass border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                  <img src="/aditya_logo.jpg" alt="Aditya 365" className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <div className="font-display font-black text-2xl text-white tracking-tighter uppercase leading-none">
