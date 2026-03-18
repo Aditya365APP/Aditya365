@@ -57,21 +57,7 @@ export default function Footer() {
                 The pinnacle of premium lottery experiences in India. We combine cutting-edge technology with transparent fairness to deliver life-changing opportunities daily.
               </p>
 
-              {/* Contact */}
-              <div className="space-y-2.5">
-                <div className="flex items-center gap-3 text-gray-500 text-sm">
-                  <FiMail className="text-yellow-500 flex-shrink-0" size={14} />
-                  support@aditya365.com
-                </div>
-                <div className="flex items-center gap-3 text-gray-500 text-sm">
-                  <FiPhone className="text-yellow-500 flex-shrink-0" size={14} />
-                  +91 98765 43210
-                </div>
-                <div className="flex items-center gap-3 text-gray-500 text-sm">
-                  <FiMapPin className="text-yellow-500 flex-shrink-0" size={14} />
-                  Hyderabad, Telangana, India
-                </div>
-              </div>
+
 
               {/* Socials */}
               <div className="flex gap-3">
