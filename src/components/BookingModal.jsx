@@ -11,7 +11,7 @@ export default function BookingModal({ isOpen, onClose, planName, planPrice, the
     email: '',
   });
 
-  const WHATSAPP_NUMBER = '919959995646';
+  const WHATSAPP_NUMBER = '917799399889';
 
   const handleSubmit = (e) => {
     e.preventDefault();
