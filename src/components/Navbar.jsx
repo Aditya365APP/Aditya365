@@ -41,9 +41,9 @@ export default function Navbar() {
             <motion.div
               whileHover={{ rotate: 15, scale: 1.1 }}
               transition={{ type: 'spring', stiffness: 300 }}
-              className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border border-white/10 glass flex items-center justify-center"
+              className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center"
             >
-              <img src="/aditya_logo.jpg" alt="Aditya 365" className="w-full h-full object-cover" />
+              <img src="/aditya_logo.jpg" alt="Aditya 365" className="w-full h-full object-contain mix-blend-multiply" />
             </motion.div>
             <div className="flex flex-col">
               <span className="font-display font-black text-2xl tracking-tighter text-white leading-none uppercase">
