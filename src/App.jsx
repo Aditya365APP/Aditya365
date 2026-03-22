@@ -11,6 +11,7 @@ import AlfaBeta from './pages/AlfaBeta';
 import Winners from './pages/Winners';
 import Leaderboard from './pages/Leaderboard';
 import About from './pages/About';
+import PaymentQR from './pages/PaymentQR';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/winners" element={<Winners />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/about" element={<About />} />
+            <Route path="/payment-qr" element={<PaymentQR />} />
             {/* Dummy route for unfinished pages */}
             <Route path="*" element={<div className="min-h-screen flex items-center justify-center pt-20"><h1 className="text-2xl text-yellow-400 font-display">Coming Soon...</h1></div>} />
           </Routes>

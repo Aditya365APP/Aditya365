@@ -1,17 +1,13 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiSend, FiUser, FiPhone, FiMail, FiMapPin } from 'react-icons/fi';
+import { useNavigate, useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 export default function BookingModal({ isOpen, onClose, planName, planPrice, themeColor }) {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    address: '',
-    email: '',
-  });
-
-  const WHATSAPP_NUMBER = '917799399889';
+  const [formData, setFormData] = useState({ name: '', phone: '', address: '', email: '' });
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,22 +17,17 @@ export default function BookingModal({ isOpen, onClose, planName, planPrice, the
       return;
     }
 
-    const message = `*NEW PARTICIPATION: ADITYA 365*
---------------------------
-*Plan:* ${planName} (₹${planPrice})
-*Name:* ${formData.name}
-*Phone:* ${formData.phone}
-*Address:* ${formData.address}
-${formData.email ? `*Email:* ${formData.email}` : ''}
---------------------------
-_I want to participate in this plan._`;
-
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
-
-    window.open(whatsappUrl, '_blank');
-    toast.success('Redirecting to WhatsApp...');
     onClose();
+    
+    // Pass form data and plan details to the QR page
+    navigate('/payment-qr', { 
+      state: { 
+        from: location.pathname,
+        formData: formData,
+        planName: planName,
+        planPrice: planPrice
+      } 
+    });
   };
 
   return (
@@ -61,34 +52,22 @@ _I want to participate in this plan._`;
               borderColor: `${themeColor}33`
             }}
           >
-            {/* Header */}
             <div className="p-6 border-b border-white/5 flex items-center justify-between">
               <div>
                 <h3 className="text-xl font-bold text-white tracking-tight">Participate Now</h3>
                 <p className="text-gray-500 text-xs mt-1 uppercase tracking-widest">{planName} • ₹{planPrice}</p>
               </div>
-              <button
-                onClick={onClose}
-                className="p-2 rounded-full hover:bg-white/5 text-gray-400 hover:text-white transition-colors"
-              >
+              <button onClick={onClose} className="p-2 rounded-full hover:bg-white/5 text-gray-400 hover:text-white transition-colors">
                 <FiX size={20} />
               </button>
             </div>
 
-            {/* Form */}
             <form onSubmit={handleSubmit} className="p-6 space-y-4">
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Full Name *</label>
                 <div className="relative">
                   <FiUser className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
-                  <input
-                    type="text"
-                    required
-                    placeholder="Enter your name"
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-3.5 pl-11 pr-4 text-white focus:border-yellow-400/50 outline-none transition-all placeholder:text-gray-700"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  />
+                  <input type="text" required placeholder="Enter your name" className="w-full bg-white/5 border border-white/10 rounded-2xl py-3.5 pl-11 pr-4 text-white focus:border-yellow-400/50 outline-none transition-all placeholder:text-gray-700" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
                 </div>
               </div>
 
@@ -96,14 +75,7 @@ _I want to participate in this plan._`;
                 <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">WhatsApp Number *</label>
                 <div className="relative">
                   <FiPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
-                  <input
-                    type="tel"
-                    required
-                    placeholder="Mobile number"
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-3.5 pl-11 pr-4 text-white focus:border-yellow-400/50 outline-none transition-all placeholder:text-gray-700"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  />
+                  <input type="tel" required placeholder="Mobile number" className="w-full bg-white/5 border border-white/10 rounded-2xl py-3.5 pl-11 pr-4 text-white focus:border-yellow-400/50 outline-none transition-all placeholder:text-gray-700" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} />
                 </div>
               </div>
 
@@ -111,13 +83,7 @@ _I want to participate in this plan._`;
                 <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Living Address *</label>
                 <div className="relative">
                   <FiMapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
-                  <textarea
-                    required
-                    placeholder="Complete address (for prize delivery)"
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-3.5 pl-11 pr-4 text-white focus:border-yellow-400/50 outline-none transition-all placeholder:text-gray-700 h-24 resize-none"
-                    value={formData.address}
-                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                  />
+                  <textarea required placeholder="Complete address" className="w-full bg-white/5 border border-white/10 rounded-2xl py-3.5 pl-11 pr-4 text-white focus:border-yellow-400/50 outline-none transition-all placeholder:text-gray-700 h-24 resize-none" value={formData.address} onChange={(e) => setFormData({ ...formData, address: e.target.value })} />
                 </div>
               </div>
 
@@ -125,29 +91,13 @@ _I want to participate in this plan._`;
                 <label className="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Email ID (Optional)</label>
                 <div className="relative">
                   <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
-                  <input
-                    type="email"
-                    placeholder="your@email.com"
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-3.5 pl-11 pr-4 text-white focus:border-yellow-400/50 outline-none transition-all placeholder:text-gray-700"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  />
+                  <input type="email" placeholder="your@email.com" className="w-full bg-white/5 border border-white/10 rounded-2xl py-3.5 pl-11 pr-4 text-white focus:border-yellow-400/50 outline-none transition-all placeholder:text-gray-700" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
                 </div>
               </div>
 
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                className="w-full py-4 mt-4 rounded-2xl font-bold text-white flex items-center justify-center gap-2 shadow-2xl transition-all"
-                style={{ background: `linear-gradient(135deg, ${themeColor}, ${themeColor}cc)` }}
-              >
-                <FiSend /> Send Message to WhatsApp
+              <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} type="submit" className="w-full py-4 mt-4 rounded-2xl font-bold text-white flex items-center justify-center gap-2 shadow-2xl transition-all" style={{ background: `linear-gradient(135deg, ${themeColor}, ${themeColor}cc)` }}>
+                <FiSend /> Proceed to Pay & Buy
               </motion.button>
-
-              <p className="text-[10px] text-gray-600 text-center uppercase tracking-widest mt-4">
-                🔒 Your data is secure & encrypted
-              </p>
             </form>
           </motion.div>
         </div>
