@@ -707,14 +707,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── FAQ ─── */}
-      <section className="py-10 sm:py-12">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+      {/* ─── FAQ (2 COLUMNS) ─── */}
+      <section className="py-10 sm:py-14">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center mb-8 sm:mb-10"
+            className="text-center mb-10 sm:mb-12"
           >
             <div className="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/20 px-4 py-1.5 rounded-full mb-3">
               <span className="text-yellow-400 text-[11px] font-bold uppercase tracking-[0.2em] font-mono">
@@ -728,100 +728,183 @@ export default function Home() {
               Everything you need to know about the Aditya 365 draw system, legal security, and prize fulfillment.
             </p>
           </motion.div>
-          <div className="space-y-3">
-            {faqs.map((faq, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="luxury-card overflow-hidden transition-all duration-200"
-              >
-                <button
-                  className="w-full flex items-center justify-between gap-4 text-left group"
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                >
-                  <span className="text-white font-medium text-sm sm:text-base group-hover:text-yellow-400 transition-colors">
-                    {faq.q}
-                  </span>
-                  <motion.div
-                    animate={{ rotate: openFaq === i ? 45 : 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="w-7 h-7 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-yellow-400 flex-shrink-0 group-hover:border-[#D4AF37]/50"
-                  >
-                    <FiPlus size={15} />
-                  </motion.div>
-                </button>
+
+          {/* 2 Columns Side by Side */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-start">
+            {/* Column 1 (First Half) */}
+            <div className="space-y-3.5">
+              {faqs.slice(0, Math.ceil(faqs.length / 2)).map((faq, i) => (
                 <motion.div
-                  initial={false}
-                  animate={{ height: openFaq === i ? 'auto' : 0, opacity: openFaq === i ? 1 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
+                  key={i}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                  className="luxury-card overflow-hidden transition-all duration-200 border border-white/[0.08] hover:border-[#D4AF37]/40"
                 >
-                  <p className="text-gray-400 text-xs sm:text-sm pt-4 leading-relaxed border-t border-white/[0.04] mt-3">
-                    {faq.a}
-                  </p>
+                  <button
+                    className="w-full flex items-center justify-between gap-4 text-left group py-1"
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  >
+                    <span className="text-white font-medium text-sm sm:text-base group-hover:text-yellow-400 transition-colors">
+                      {faq.q}
+                    </span>
+                    <motion.div
+                      animate={{ rotate: openFaq === i ? 45 : 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="w-7 h-7 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-yellow-400 flex-shrink-0 group-hover:border-[#D4AF37]/50"
+                    >
+                      <FiPlus size={15} />
+                    </motion.div>
+                  </button>
+                  <motion.div
+                    initial={false}
+                    animate={{ height: openFaq === i ? 'auto' : 0, opacity: openFaq === i ? 1 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <p className="text-gray-400 text-xs sm:text-sm pt-4 leading-relaxed border-t border-white/[0.04] mt-3">
+                      {faq.a}
+                    </p>
+                  </motion.div>
                 </motion.div>
-              </motion.div>
-            ))}
+              ))}
+            </div>
+
+            {/* Column 2 (Second Half) */}
+            <div className="space-y-3.5">
+              {faqs.slice(Math.ceil(faqs.length / 2)).map((faq, i) => {
+                const actualIndex = i + Math.ceil(faqs.length / 2);
+                return (
+                  <motion.div
+                    key={actualIndex}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 + 0.1 }}
+                    className="luxury-card overflow-hidden transition-all duration-200 border border-white/[0.08] hover:border-[#D4AF37]/40"
+                  >
+                    <button
+                      className="w-full flex items-center justify-between gap-4 text-left group py-1"
+                      onClick={() => setOpenFaq(openFaq === actualIndex ? null : actualIndex)}
+                    >
+                      <span className="text-white font-medium text-sm sm:text-base group-hover:text-yellow-400 transition-colors">
+                        {faq.q}
+                      </span>
+                      <motion.div
+                        animate={{ rotate: openFaq === actualIndex ? 45 : 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="w-7 h-7 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-yellow-400 flex-shrink-0 group-hover:border-[#D4AF37]/50"
+                      >
+                        <FiPlus size={15} />
+                      </motion.div>
+                    </button>
+                    <motion.div
+                      initial={false}
+                      animate={{ height: openFaq === actualIndex ? 'auto' : 0, opacity: openFaq === actualIndex ? 1 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <p className="text-gray-400 text-xs sm:text-sm pt-4 leading-relaxed border-t border-white/[0.04] mt-3">
+                        {faq.a}
+                      </p>
+                    </motion.div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ─── CTA SECTION ─── */}
-      <section className="py-10 sm:py-14">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      {/* ─── FULL SCREEN CTA SECTION (EDGE TO EDGE) ─── */}
+      <section className="w-full relative py-16 sm:py-24 overflow-hidden border-t border-b border-[#D4AF37]/25 my-6 sm:my-10"
+        style={{
+          background: 'radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.12) 0%, rgba(20,14,5,0.92) 55%, #08080c 100%)',
+        }}
+      >
+        {/* Ambient atmospheric glows */}
+        <div className="absolute -left-32 top-1/2 -translate-y-1/2 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute -right-32 top-1/2 -translate-y-1/2 w-96 h-96 bg-red-500/10 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.04] pointer-events-none" />
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative rounded-3xl overflow-hidden p-8 sm:p-14"
-            style={{
-              background: 'linear-gradient(135deg, #161005 0%, #1e1408 50%, #110c05 100%)',
-              border: '1px solid rgba(212,175,55,0.3)',
-              boxShadow: '0 0 60px rgba(212,175,55,0.12), 0 20px 40px rgba(0,0,0,0.6)',
-            }}
+            className="inline-flex items-center gap-2 bg-[#D4AF37]/15 border border-[#D4AF37]/35 px-4 py-1.5 rounded-full mb-6 shadow-[0_0_20px_rgba(212,175,55,0.15)]"
           >
-            <div className="absolute inset-0 opacity-30 pointer-events-none"
-              style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.25) 0%, transparent 65%)' }}
-            />
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 bg-[#D4AF37]/15 border border-[#D4AF37]/35 px-4 py-1.5 rounded-full mb-6 shadow-sm">
-                <FiAward className="text-[#D4AF37] text-sm" />
-                <span className="text-[#D4AF37] text-[11px] font-bold uppercase tracking-[0.2em] font-mono">
-                  Official Draw Portfolio
-                </span>
-              </div>
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-[#D4AF37] text-[11px] font-bold uppercase tracking-[0.2em] font-mono">
+              Official Draw Portfolio • Live Enrollment
+            </span>
+          </motion.div>
 
-              <h2 className="font-display text-3xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
-                Ready to <span className="gradient-text">Participate?</span>
-              </h2>
-              <p className="text-gray-300 text-sm sm:text-base mb-8 max-w-xl mx-auto leading-relaxed">
-                Join 5 lakh+ members winning premium prizes every quarter. Secure your digital ticket starting from just ₹101.
-              </p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-display text-4xl sm:text-6xl font-bold text-white mb-5 tracking-tight leading-tight"
+          >
+            Ready to <span className="gradient-text">Participate?</span>
+          </motion.h2>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Link to="/diamond" className="btn-gold px-8 py-3.5 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase inline-flex items-center justify-center gap-2 shadow-[0_4px_25px_rgba(212,175,55,0.3)] hover:scale-105 transition-all">
-                  <GiDiamonds /> Explore Diamond Series
-                </Link>
-                <Link to="/alfa-beta" className="btn-outline-gold px-8 py-3.5 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase inline-flex items-center justify-center gap-2 hover:bg-[#D4AF37]/10 transition-all">
-                  View Alfa Beta Plans <FiChevronRight />
-                </Link>
-              </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+            className="text-gray-300 text-sm sm:text-lg mb-10 max-w-2xl mx-auto leading-relaxed"
+          >
+            Join 5 lakh+ members winning premium luxury prizes every quarter. Secure your digital ticket starting from just ₹101 and experience certified fair draws.
+          </motion.p>
 
-              {/* Trust Badges */}
-              <div className="mt-8 pt-6 border-t border-white/[0.08] flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-gray-400 text-xs">
-                <span className="flex items-center gap-1.5">
-                  <FiCheck className="text-emerald-400" /> 100% Legal & Audited
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <FiCheck className="text-emerald-400" /> Instant SMS Serial
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <FiCheck className="text-emerald-400" /> Insured Doorstep Delivery
-                </span>
-              </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
+            <Link
+              to="/diamond"
+              className="w-full sm:w-auto btn-gold px-10 py-4 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase inline-flex items-center justify-center gap-2 shadow-[0_6px_30px_rgba(212,175,55,0.35)] hover:scale-105 transition-all"
+            >
+              <GiDiamonds className="text-base" /> Explore Diamond Series
+            </Link>
+            <Link
+              to="/alfa-beta"
+              className="w-full sm:w-auto btn-outline-gold px-10 py-4 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase inline-flex items-center justify-center gap-2 hover:bg-[#D4AF37]/15 transition-all"
+            >
+              View Alfa Beta Plans <FiChevronRight />
+            </Link>
+          </motion.div>
+
+          {/* Full-bleed Trust Verification Row */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mt-12 pt-8 border-t border-white/[0.08] grid grid-cols-2 md:grid-cols-4 gap-4 text-gray-400 text-xs text-center"
+          >
+            <div className="flex items-center justify-center gap-2">
+              <FiCheck className="text-emerald-400 flex-shrink-0" />
+              <span>100% Legal & Audited</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <FiCheck className="text-emerald-400 flex-shrink-0" />
+              <span>Instant WhatsApp & SMS Serial</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <FiCheck className="text-emerald-400 flex-shrink-0" />
+              <span>Insured Doorstep Delivery</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <FiCheck className="text-emerald-400 flex-shrink-0" />
+              <span>256-Bit Escrow Security</span>
             </div>
           </motion.div>
         </div>

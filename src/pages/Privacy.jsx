@@ -293,7 +293,7 @@ export default function Privacy() {
                   <div className="text-base font-bold text-white">Data Privacy & Grievance Cell — Aditya 365</div>
                   <div className="flex items-center gap-3 text-sm text-gray-300">
                     <FiMapPin className="text-yellow-400 flex-shrink-0" size={16} />
-                    <span>Aditya 365, Road No. 36, Jubilee Hills, Hyderabad, Telangana - 500033, India</span>
+                    <span>Aditya 365, Near Water Tank, 3rd Cross, Kumaraswamy Layout, Bangalore, Karnataka - 560078, India</span>
                   </div>
                   <div className="flex items-center gap-3 text-sm text-gray-300">
                     <FiMail className="text-yellow-400 flex-shrink-0" size={16} />

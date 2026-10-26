@@ -291,7 +291,7 @@ export default function Terms() {
                   These Terms shall be interpreted, construed, and enforced in accordance with the substantive laws of the Republic of India.
                 </p>
                 <p>
-                  Any controversy, dispute, or claim arising out of or related to these Terms, including validity or termination, shall be submitted to the exclusive jurisdiction of the competent courts located in <strong className="text-white">Hyderabad, Telangana, India</strong>.
+                  Any controversy, dispute, or claim arising out of or related to these Terms, including validity or termination, shall be submitted to the exclusive jurisdiction of the competent courts located in <strong className="text-white">Bangalore, Karnataka, India</strong>.
                 </p>
               </div>
             </section>
@@ -310,7 +310,7 @@ export default function Terms() {
                   <div className="text-base font-bold text-white">Aditya 365 Grievance Cell</div>
                   <div className="flex items-center gap-3 text-sm text-gray-300">
                     <FiMapPin className="text-yellow-400 flex-shrink-0" size={16} />
-                    <span>Aditya 365, Road No. 36, Jubilee Hills, Hyderabad, Telangana - 500033, India</span>
+                    <span>Aditya 365, Near Water Tank, 3rd Cross, Kumaraswamy Layout, Bangalore, Karnataka - 560078, India</span>
                   </div>
                   <div className="flex items-center gap-3 text-sm text-gray-300">
                     <FiMail className="text-yellow-400 flex-shrink-0" size={16} />

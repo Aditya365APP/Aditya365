@@ -27,7 +27,7 @@ export default function Contact() {
 
     setIsSubmitting(true);
     // WhatsApp redirect fallback for instant reachability
-    const WHATSAPP_NUMBER = '919959995646';
+    const WHATSAPP_NUMBER = '917799399889';
     const msg = `*CONTACT INQUIRY: ADITYA 365*
 --------------------------
 *Name:* ${formData.name}
@@ -84,8 +84,16 @@ export default function Contact() {
                   <div>
                     <div className="text-xs text-gray-400 uppercase font-semibold tracking-wider">Office Address</div>
                     <div className="text-white text-sm font-medium mt-0.5 leading-relaxed">
-                      Aditya 365, Road No. 36, Jubilee Hills, Hyderabad, Telangana - 500033, India
+                      Aditya 365, Near Water Tank, 3rd Cross, Kumaraswamy Layout, Bangalore, Karnataka - 560078, India
                     </div>
+                    <a
+                      href="https://maps.google.com/?q=Kumaraswamy+Layout+near+water+tank+3rd+cross+Bangalore+560078"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs text-yellow-400 hover:text-yellow-300 font-semibold mt-1.5 hover:underline"
+                    >
+                      <FiMapPin size={12} /> View on Google Maps →
+                    </a>
                   </div>
                 </div>
 

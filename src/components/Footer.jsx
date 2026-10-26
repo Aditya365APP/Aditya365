@@ -73,12 +73,12 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center gap-3 text-gray-500 text-sm">
                   <FiPhone className="text-yellow-500 flex-shrink-0" size={14} />
-                  {/* ORIGINAL CODE: +91 98765 43210 */}
-                  +91 99599 95646
+                  {/* ORIGINAL CODE: +91 7799399889 */}
+                  +91 7799399889
                 </div>
                 <div className="flex items-center gap-3 text-gray-500 text-sm">
                   <FiMapPin className="text-yellow-500 flex-shrink-0" size={14} />
-                  Hyderabad, Telangana, India
+                  Kumaraswamy Layout, Bangalore - 560078
                 </div>
               </div>
 

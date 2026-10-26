@@ -254,7 +254,7 @@ export default function RefundPolicy() {
 
                 <div className="text-xs text-gray-400 pt-2 border-t border-white/5 flex items-center gap-2">
                   <FiMapPin className="text-yellow-400 flex-shrink-0" size={14} />
-                  <span>Aditya 365, Road No. 36, Jubilee Hills, Hyderabad, Telangana - 500033, India</span>
+                  <span>Aditya 365, Near Water Tank, 3rd Cross, Kumaraswamy Layout, Bangalore, Karnataka - 560078, India</span>
                 </div>
               </div>
             </div>
