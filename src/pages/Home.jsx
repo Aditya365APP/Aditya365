@@ -148,9 +148,9 @@ export default function Home() {
                 backgroundImage: `url(${heroImages[currentImageIndex]})`,
               }}
             >
-              {/* Luxury Obsidian Film Gradients */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#030305] via-[#030305]/95 to-[#030305]/75" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#030305] via-transparent to-[#030305]/70" />
+              {/* Luxury Obsidian Film Gradients - balanced so the high-res stage shines through while text stays readable */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#030305]/85 via-[#030305]/50 to-[#030305]/30" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030305] via-transparent to-[#030305]/50" />
             </motion.div>
           </AnimatePresence>
 
