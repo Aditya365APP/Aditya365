@@ -19,7 +19,7 @@ const footerLinks = {
     { label: 'FAQ', to: '/faq' },
     { label: 'Terms & Conditions', to: '/terms' },
     { label: 'Privacy Policy', to: '/privacy' },
-    { label: 'Responsible Gaming', to: '/responsible' },
+    { label: 'Refund & Cancellation', to: '/refund-policy' },
   ],
 };
 
@@ -43,8 +43,8 @@ export default function Footer() {
             {/* Brand */}
             <div className="lg:col-span-2 space-y-6">
               <Link to="/" className="flex items-center gap-3 group">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                  <img src="/aditya_logo.jpg" alt="Aditya 365" className="w-full h-full object-contain mix-blend-multiply" />
+                <div className="w-12 h-12 rounded-xl glass border border-white/10 flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-500">
+                  <img src="/aditya_logo.jpg" alt="Aditya 365" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <div className="font-display font-black text-2xl text-white tracking-tighter uppercase leading-none">
@@ -57,7 +57,21 @@ export default function Footer() {
                 The pinnacle of premium lottery experiences in India. We combine cutting-edge technology with transparent fairness to deliver life-changing opportunities daily.
               </p>
 
-
+              {/* Contact */}
+              <div className="space-y-2.5">
+                <div className="flex items-center gap-3 text-gray-500 text-sm">
+                  <FiMail className="text-yellow-500 flex-shrink-0" size={14} />
+                  support@aditya365.com
+                </div>
+                <div className="flex items-center gap-3 text-gray-500 text-sm">
+                  <FiPhone className="text-yellow-500 flex-shrink-0" size={14} />
+                  +91 98765 43210
+                </div>
+                <div className="flex items-center gap-3 text-gray-500 text-sm">
+                  <FiMapPin className="text-yellow-500 flex-shrink-0" size={14} />
+                  Hyderabad, Telangana, India
+                </div>
+              </div>
 
               {/* Socials */}
               <div className="flex gap-3">
@@ -123,10 +137,11 @@ export default function Footer() {
             <p className="text-gray-600 text-[10px] uppercase tracking-widest font-bold font-sans">
               © 2026 Aditya 365 • Crafted for High Rollers
             </p>
-            <div className="flex gap-6 text-gray-500 text-xs font-medium">
+            <div className="flex flex-wrap gap-4 sm:gap-6 text-gray-500 text-xs font-medium">
               <Link to="/terms" className="hover:text-[#D4AF37] transition-colors">Terms</Link>
               <Link to="/privacy" className="hover:text-[#D4AF37] transition-colors">Privacy</Link>
-              <Link to="/responsible" className="hover:text-[#D4AF37] transition-colors">Responsible Gaming</Link>
+              <Link to="/refund-policy" className="hover:text-[#D4AF37] transition-colors">Refund Policy</Link>
+              <Link to="/contact" className="hover:text-[#D4AF37] transition-colors">Contact Us</Link>
             </div>
           </div>
         </div>
