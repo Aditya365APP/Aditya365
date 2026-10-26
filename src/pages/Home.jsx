@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FiShield, FiAward, FiUsers, FiZap, FiChevronRight, FiStar, FiUserCheck, FiCreditCard, FiCheckCircle, FiArrowRight, FiClock, FiCheck } from 'react-icons/fi';
+import { FiShield, FiAward, FiUsers, FiZap, FiChevronRight, FiStar, FiUserCheck, FiCreditCard, FiCheckCircle, FiArrowRight, FiClock, FiCheck, FiLayers, FiLock, FiSmartphone, FiPlus } from 'react-icons/fi';
 import { GiDiamonds, GiTrophy, GiWallet } from 'react-icons/gi';
 import DiamondCard from '../components/DiamondCard';
 import AlfaBetaCard from '../components/AlfaBetaCard';
@@ -347,7 +347,7 @@ export default function Home() {
       </section>
 
       {/* ─── STATS SECTION ─── */}
-      <section className="py-16">
+      <section className="py-8 sm:py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {trustStats.map(({ icon: Icon, value, label, color }, i) => (
@@ -444,24 +444,18 @@ export default function Home() {
       </section>
 
       {/* ─── DIAMOND PLANS ─── */}
-      <section id="diamond" className="py-20">
+      <section id="diamond" className="pt-8 pb-10 sm:pt-10 sm:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-14"
+            className="text-center mb-8 sm:mb-10"
           >
             <div className="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/20 px-4 py-2 rounded-full mb-4">
               <GiDiamonds className="text-yellow-400" />
-              {/* ORIGINAL CODE: <span className="text-yellow-400 text-sm font-bold uppercase tracking-widest">Diamond Lottery</span> */}
               <span className="text-yellow-400 text-sm font-bold uppercase tracking-widest">Diamond Draw</span>
             </div>
-            {/* ORIGINAL CODE:
-            <h2 className="section-title text-white mb-3">
-              💎 <span className="gradient-text">Diamond</span> Reward Box
-            </h2>
-            */}
             <h2 className="section-title text-white mb-3">
               <span className="gradient-text">Diamond</span> Signature Series
             </h2>
@@ -476,7 +470,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-center mt-10">
+          <div className="text-center mt-6">
             <Link to="/diamond" className="btn-outline-gold px-8 py-3 rounded-full inline-flex items-center gap-2">
               View All Plans <FiChevronRight />
             </Link>
@@ -485,7 +479,7 @@ export default function Home() {
       </section>
 
       {/* ─── ALFA BETA SECTION ─── */}
-      <section id="alfa-beta" className="py-20 relative">
+      <section id="alfa-beta" className="py-8 sm:py-10 relative">
         <div className="absolute inset-0 opacity-30"
           style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(255,45,85,0.08) 0%, transparent 70%)' }}
         />
@@ -494,16 +488,8 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-14"
+            className="text-center mb-8 sm:mb-10"
           >
-            {/* ORIGINAL CODE:
-            <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/20 px-4 py-2 rounded-full mb-4">
-              <span className="text-red-400 text-sm font-bold uppercase tracking-widest">🎯 Alfa Beta System</span>
-            </div>
-            <h2 className="section-title text-white mb-3">
-              🎯 <span className="gradient-text-red">Alfa Beta</span> Plans
-            </h2>
-            */}
             <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/20 px-4 py-2 rounded-full mb-4">
               <span className="text-red-400 text-xs font-bold uppercase tracking-widest">Tier-Structured Plans</span>
             </div>
@@ -524,59 +510,150 @@ export default function Home() {
       </section>
 
       {/* ─── HOW IT WORKS ─── */}
-      <section className="py-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-10 sm:py-14 relative overflow-hidden">
+        {/* Ambient background glow */}
+        <div className="absolute inset-0 pointer-events-none opacity-20"
+          style={{ background: 'radial-gradient(ellipse at 50% 20%, rgba(212,175,55,0.12) 0%, transparent 70%)' }} />
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-14"
+            className="text-center mb-10 sm:mb-12"
           >
-            <h2 className="section-title gradient-text">How It Works</h2>
-            <p className="text-gray-400 mt-3">Simple, transparent, and fair</p>
+            <div className="inline-flex items-center gap-2 bg-[#D4AF37]/10 border border-[#D4AF37]/25 px-4 py-1.5 rounded-full mb-3 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[#D4AF37] text-[11px] font-bold uppercase tracking-[0.2em] font-mono">
+                Verified Draw Protocol
+              </span>
+            </div>
+            <h2 className="section-title text-white">
+              How It <span className="gradient-text">Works</span>
+            </h2>
+            <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mt-2 leading-relaxed">
+              A transparent, 4-stage verified pipeline engineered with certified PRNG algorithms and automated digital ticket settlement.
+            </p>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 relative">
-            {[
-              { step: '01', icon: FiUserCheck, title: 'Select Your Plan', desc: 'Browse our Diamond or Alfa Beta prize portfolios.' },
-              { step: '02', icon: FiCreditCard, title: 'Secure Checkout', desc: 'Pay instantly via UPI, Card, or Net Banking with Razorpay.' },
-              { step: '03', icon: FiCheckCircle, title: 'Instant Ticket', desc: 'Receive your unique digital serial ticket via SMS & WhatsApp.' },
-              { step: '04', icon: FiAward, title: 'Audited Draw', desc: 'Certified PRNG draws with insured doorstep prize handover.' },
-            ].map(({ step, icon: StepIcon, title, desc }, i) => (
-              <motion.div
-                key={step}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                className="relative text-center bg-[#0c0d16] border border-white/[0.06] rounded-2xl p-6 hover:border-[#D4AF37]/30 transition-colors"
-              >
-                <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center text-[#D4AF37] mx-auto mb-4 text-xl">
-                  <StepIcon />
-                </div>
-                <div className="text-[#D4AF37] font-mono text-[10px] font-bold uppercase tracking-widest mb-1.5">{step}</div>
-                <h3 className="text-white font-bold text-base mb-1.5">{title}</h3>
-                <p className="text-gray-400 text-xs leading-relaxed">{desc}</p>
-              </motion.div>
-            ))}
+
+          <div className="relative">
+            {/* Desktop Connected Workflow Timeline Beam */}
+            <div className="hidden lg:block absolute top-[48px] left-[12%] right-[12%] h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent z-0 pointer-events-none" />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 relative z-10">
+              {[
+                {
+                  step: '01',
+                  phase: 'PHASE 01',
+                  icon: FiLayers,
+                  title: 'Select Your Plan',
+                  desc: 'Explore Diamond or Alfa Beta prize portfolios with fixed allocation pools and transparent winning odds.',
+                  tag: 'Pool Transparency',
+                  detail: 'Fixed limited entries per draw'
+                },
+                {
+                  step: '02',
+                  phase: 'PHASE 02',
+                  icon: FiLock,
+                  title: 'Secure Escrow',
+                  desc: 'Complete payment through Razorpay gateway supporting encrypted UPI, Debit/Credit cards, or Net Banking.',
+                  tag: '256-Bit Encryption',
+                  detail: 'Instant payment reconciliation'
+                },
+                {
+                  step: '03',
+                  phase: 'PHASE 03',
+                  icon: FiSmartphone,
+                  title: 'Cryptographic Ticket',
+                  desc: 'Unique cryptographic serial number is minted immediately and dispatched straight to your SMS & WhatsApp.',
+                  tag: 'Instant Delivery',
+                  detail: 'Tamper-proof digital receipt'
+                },
+                {
+                  step: '04',
+                  phase: 'PHASE 04',
+                  icon: FiAward,
+                  title: 'Audited Draw',
+                  desc: 'Automated PRNG draw conducted under strict compliance with fully insured doorstep prize delivery to winners.',
+                  tag: 'Certified PRNG',
+                  detail: 'Insured doorstep handover'
+                },
+              ].map(({ step, phase, icon: StepIcon, title, desc, tag, detail }, i) => (
+                <motion.div
+                  key={step}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.12 }}
+                  className="relative group bg-[#0c0d16] border border-white/[0.08] hover:border-[#D4AF37]/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.6),0_0_25px_rgba(212,175,55,0.12)] flex flex-col justify-between overflow-hidden"
+                >
+                  {/* Subtle Background Watermark Step Number */}
+                  <div className="absolute top-2 right-4 text-white/[0.03] font-serif font-black text-6xl select-none pointer-events-none group-hover:text-[#D4AF37]/[0.08] transition-colors duration-300">
+                    {step}
+                  </div>
+
+                  {/* Top Bar: Icon Node & Phase Badge */}
+                  <div>
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#D4AF37]/20 via-[#0c0d16] to-[#D4AF37]/5 border border-[#D4AF37]/35 flex items-center justify-center text-[#D4AF37] text-xl shadow-[0_0_20px_rgba(212,175,55,0.18)] group-hover:scale-110 group-hover:border-[#D4AF37] transition-all duration-300 relative z-10">
+                        <StepIcon />
+                      </div>
+                      <span className="font-mono text-[11px] font-bold text-[#D4AF37] bg-[#D4AF37]/10 border border-[#D4AF37]/20 px-2.5 py-1 rounded-md tracking-wider">
+                        {phase}
+                      </span>
+                    </div>
+
+                    <h3 className="text-white font-bold text-lg mb-2 tracking-tight group-hover:text-yellow-400 transition-colors">
+                      {title}
+                    </h3>
+                    <p className="text-gray-400 text-xs sm:text-[13px] leading-relaxed mb-4">
+                      {desc}
+                    </p>
+                  </div>
+
+                  {/* Micro Trust Tag & Spec Line */}
+                  <div className="pt-3 border-t border-white/[0.06] mt-2">
+                    <div className="flex items-center justify-between text-[11px]">
+                      <span className="text-yellow-400/90 font-medium flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+                        {tag}
+                      </span>
+                      <span className="text-gray-500 font-mono text-[10px]">
+                        {detail}
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ─── TESTIMONIALS ─── */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20"
+      <section className="py-10 sm:py-12 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse at 50% 100%, rgba(255,215,0,0.15) 0%, transparent 60%)' }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center mb-14"
+            className="text-center mb-8 sm:mb-10"
           >
+            <div className="inline-flex items-center gap-2 bg-[#D4AF37]/10 border border-[#D4AF37]/25 px-4 py-1.5 rounded-full mb-3">
+              <FiCheck className="text-emerald-400 text-xs" />
+              <span className="text-[#D4AF37] text-[11px] font-bold uppercase tracking-[0.2em] font-mono">
+                Verified Social Proof
+              </span>
+            </div>
             <h2 className="section-title">
               <span className="gradient-text">Real Winners</span>
               <span className="text-white">, Real Stories</span>
             </h2>
+            <p className="text-gray-400 text-xs sm:text-sm mt-1 max-w-xl mx-auto">
+              Authentic draw outcomes and verified testimonials from our active membership base across India.
+            </p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {testimonials.map((t, i) => (
@@ -586,31 +663,43 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="luxury-card space-y-4"
+                className="luxury-card space-y-4 relative flex flex-col justify-between"
               >
-                <div className="flex items-center gap-3">
-                  {/* ORIGINAL CODE:
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center text-2xl">
-                    {t.avatar}
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-[#0c0d16] border border-[#D4AF37]/30 flex items-center justify-center text-xs font-bold font-mono text-[#D4AF37] shadow-md flex-shrink-0">
+                        {t.avatar}
+                      </div>
+                      <div>
+                        <p className="text-white font-bold text-sm tracking-tight">{t.name}</p>
+                        <p className="text-gray-500 text-xs">{t.city}</p>
+                      </div>
+                    </div>
+                    <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-semibold px-2 py-0.5 rounded-full flex items-center gap-1">
+                      <FiCheck size={10} /> Verified
+                    </span>
                   </div>
-                  */}
-                  <div className="w-11 h-11 rounded-2xl bg-[#0c0d16] border border-[#D4AF37]/30 flex items-center justify-center text-xs font-bold font-mono text-[#D4AF37] shadow-md flex-shrink-0">
-                    {t.avatar}
+
+                  <div className="flex gap-1 mb-2">
+                    {Array(t.rating).fill(0).map((_, j) => (
+                      <FiStar key={j} className="text-yellow-400 fill-current" size={13} />
+                    ))}
                   </div>
+
+                  <p className="text-gray-300 text-xs sm:text-sm leading-relaxed italic">
+                    "{t.comment}"
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-white/5 flex items-center justify-between">
                   <div>
-                    <p className="text-white font-bold text-sm">{t.name}</p>
-                    <p className="text-gray-600 text-xs">{t.city}</p>
+                    <div className="text-yellow-400 text-xs font-bold font-mono">Won: {t.prize}</div>
+                    <div className="text-gray-500 text-[11px]">via {t.plan}</div>
                   </div>
-                </div>
-                <div className="flex gap-0.5">
-                  {Array(t.rating).fill(0).map((_, j) => (
-                    <FiStar key={j} className="text-yellow-400 fill-current" size={13} />
-                  ))}
-                </div>
-                <p className="text-gray-400 text-sm leading-relaxed">"{t.comment}"</p>
-                <div className="pt-2 border-t border-white/5">
-                  <span className="text-yellow-400 text-xs font-bold">Won: {t.prize}</span>
-                  <span className="text-gray-600 text-xs ml-2">via {t.plan}</span>
+                  <span className="text-[10px] text-gray-500 font-mono bg-white/[0.03] px-2 py-1 rounded border border-white/[0.05]">
+                    Doorstep Delivery
+                  </span>
                 </div>
               </motion.div>
             ))}
@@ -619,38 +708,49 @@ export default function Home() {
       </section>
 
       {/* ─── FAQ ─── */}
-      <section className="py-20">
+      <section className="py-10 sm:py-12">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center mb-14"
+            className="text-center mb-8 sm:mb-10"
           >
+            <div className="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/20 px-4 py-1.5 rounded-full mb-3">
+              <span className="text-yellow-400 text-[11px] font-bold uppercase tracking-[0.2em] font-mono">
+                Support & Compliance
+              </span>
+            </div>
             <h2 className="section-title text-white">
               Frequently Asked <span className="gradient-text">Questions</span>
             </h2>
+            <p className="text-gray-400 text-xs sm:text-sm mt-1 max-w-md mx-auto">
+              Everything you need to know about the Aditya 365 draw system, legal security, and prize fulfillment.
+            </p>
           </motion.div>
           <div className="space-y-3">
             {faqs.map((faq, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="luxury-card overflow-hidden"
+                className="luxury-card overflow-hidden transition-all duration-200"
               >
                 <button
-                  className="w-full flex items-center justify-between gap-4 text-left"
+                  className="w-full flex items-center justify-between gap-4 text-left group"
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                 >
-                  <span className="text-white font-medium text-sm sm:text-base">{faq.q}</span>
+                  <span className="text-white font-medium text-sm sm:text-base group-hover:text-yellow-400 transition-colors">
+                    {faq.q}
+                  </span>
                   <motion.div
                     animate={{ rotate: openFaq === i ? 45 : 0 }}
-                    className="text-yellow-400 flex-shrink-0"
+                    transition={{ duration: 0.2 }}
+                    className="w-7 h-7 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-yellow-400 flex-shrink-0 group-hover:border-[#D4AF37]/50"
                   >
-                    <FiZap size={16} />
+                    <FiPlus size={15} />
                   </motion.div>
                 </button>
                 <motion.div
@@ -659,7 +759,9 @@ export default function Home() {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <p className="text-gray-400 text-sm pt-4 leading-relaxed">{faq.a}</p>
+                  <p className="text-gray-400 text-xs sm:text-sm pt-4 leading-relaxed border-t border-white/[0.04] mt-3">
+                    {faq.a}
+                  </p>
                 </motion.div>
               </motion.div>
             ))}
@@ -668,44 +770,57 @@ export default function Home() {
       </section>
 
       {/* ─── CTA SECTION ─── */}
-      <section className="py-20">
+      <section className="py-10 sm:py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative rounded-3xl overflow-hidden p-10 sm:p-16"
+            className="relative rounded-3xl overflow-hidden p-8 sm:p-14"
             style={{
-              background: 'linear-gradient(135deg, #1a0a00, #2a1500, #1a0a00)',
-              border: '1px solid rgba(255,215,0,0.3)',
-              boxShadow: '0 0 60px rgba(255,215,0,0.1), 0 0 120px rgba(255,45,85,0.05)',
+              background: 'linear-gradient(135deg, #161005 0%, #1e1408 50%, #110c05 100%)',
+              border: '1px solid rgba(212,175,55,0.3)',
+              boxShadow: '0 0 60px rgba(212,175,55,0.12), 0 20px 40px rgba(0,0,0,0.6)',
             }}
           >
-            <div className="absolute inset-0 opacity-30"
-              style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.2) 0%, transparent 60%)' }}
+            <div className="absolute inset-0 opacity-30 pointer-events-none"
+              style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.25) 0%, transparent 65%)' }}
             />
             <div className="relative z-10">
-              {/* ORIGINAL CODE:
-              <div className="text-5xl mb-4">🏆</div>
-              */}
-              <div className="w-16 h-16 rounded-3xl bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] text-3xl mx-auto mb-6 shadow-[0_0_30px_rgba(212,175,55,0.2)]">
-                <FiAward />
+              <div className="inline-flex items-center gap-2 bg-[#D4AF37]/15 border border-[#D4AF37]/35 px-4 py-1.5 rounded-full mb-6 shadow-sm">
+                <FiAward className="text-[#D4AF37] text-sm" />
+                <span className="text-[#D4AF37] text-[11px] font-bold uppercase tracking-[0.2em] font-mono">
+                  Official Draw Portfolio
+                </span>
               </div>
-              <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
+
+              <h2 className="font-display text-3xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
                 Ready to <span className="gradient-text">Participate?</span>
               </h2>
-              <p className="text-gray-400 text-lg mb-8 max-w-xl mx-auto">
-                Join 5 lakh+ members winning prizes every quarter. Start with just ₹101 and change your life!
+              <p className="text-gray-300 text-sm sm:text-base mb-8 max-w-xl mx-auto leading-relaxed">
+                Join 5 lakh+ members winning premium prizes every quarter. Secure your digital ticket starting from just ₹101.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                {/* ORIGINAL CODE:
-                <Link to="/diamond" className="btn-gold px-8 py-4 rounded-full text-lg font-bold">
-                  🚀 View Plans
-                </Link>
-                */}
-                <Link to="/diamond" className="btn-gold px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase inline-flex items-center justify-center gap-2">
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Link to="/diamond" className="btn-gold px-8 py-3.5 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase inline-flex items-center justify-center gap-2 shadow-[0_4px_25px_rgba(212,175,55,0.3)] hover:scale-105 transition-all">
                   <GiDiamonds /> Explore Diamond Series
                 </Link>
+                <Link to="/alfa-beta" className="btn-outline-gold px-8 py-3.5 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase inline-flex items-center justify-center gap-2 hover:bg-[#D4AF37]/10 transition-all">
+                  View Alfa Beta Plans <FiChevronRight />
+                </Link>
+              </div>
+
+              {/* Trust Badges */}
+              <div className="mt-8 pt-6 border-t border-white/[0.08] flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-gray-400 text-xs">
+                <span className="flex items-center gap-1.5">
+                  <FiCheck className="text-emerald-400" /> 100% Legal & Audited
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <FiCheck className="text-emerald-400" /> Instant SMS Serial
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <FiCheck className="text-emerald-400" /> Insured Doorstep Delivery
+                </span>
               </div>
             </div>
           </motion.div>
