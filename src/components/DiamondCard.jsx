@@ -1,9 +1,4 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FiAward, FiUsers, FiClock, FiCheck, FiArrowRight } from 'react-icons/fi';
-import CountdownTimer from './CountdownTimer';
-import BookingModal from './BookingModal';
-
+/* ORIGINAL CODE:
 export default function DiamondCard({ plan, index }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const filledPercent = Math.floor(Math.random() * 35 + 45); // 45-80% filled
@@ -18,136 +13,166 @@ export default function DiamondCard({ plan, index }) {
         whileHover={{ y: -6 }}
         className="relative group"
       >
-        {/* Card Frame */}
-        <div
-          className="relative rounded-[2rem] overflow-hidden transition-all duration-500 bg-[#0c0d16] border border-white/[0.08] group-hover:border-[#D4AF37]/40 group-hover:shadow-[0_20px_50px_rgba(212,175,55,0.08)] flex flex-col justify-between"
-        >
-          {/* Subtle Top Accent */}
+        <div className="relative rounded-[2rem] overflow-hidden transition-all duration-500 bg-[#0c0d16] border border-white/[0.08] group-hover:border-[#D4AF37]/40 group-hover:shadow-[0_20px_50px_rgba(212,175,55,0.08)] flex flex-col justify-between">
           <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent group-hover:via-[#D4AF37] transition-all duration-700" />
-
-          {/* Header Section */}
           <div className="p-7 sm:p-8 border-b border-white/[0.06] relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/[0.03] rounded-full blur-3xl pointer-events-none" />
-
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-[10px] uppercase font-bold tracking-[0.2em] text-[#D4AF37] mb-3">
-                  <FiAward size={12} />
-                  <span>{plan.badge || plan.tier}</span>
-                </div>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
-                    ₹{plan.price}
-                  </span>
-                  <span className="text-[11px] text-gray-500 uppercase tracking-wider font-semibold">/ Entry</span>
-                </div>
-              </div>
-
-              {/* Minimalist Icon Capsule */}
-              {/* ORIGINAL CODE:
-              <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-2xl group-hover:scale-105 group-hover:border-[#D4AF37]/30 transition-all duration-300">
-                {plan.emoji || '💎'}
-              </div>
-              */}
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#D4AF37]/15 to-transparent border border-[#D4AF37]/25 flex flex-col items-center justify-center group-hover:scale-105 group-hover:border-[#D4AF37]/50 transition-all duration-300 shadow-lg">
-                <span className="text-[10px] font-mono font-bold tracking-widest text-[#D4AF37] leading-none">#{plan.badge?.replace('TIER ', '') || '01'}</span>
-                <span className="text-[9px] uppercase font-bold text-gray-400 tracking-wider mt-1">SERIES</span>
-              </div>
-            </div>
+            ...
           </div>
+          ...
+        </div>
+      </motion.div>
+      <BookingModal ... />
+    </>
+  );
+}
+*/
 
-          {/* Plan Showcase Visual */}
-          {plan.image && (
-            <div className="relative w-full aspect-[4/3] max-h-56 sm:max-h-64 overflow-hidden bg-gradient-to-b from-[#141523] to-[#0c0d16] border-b border-white/[0.06] group/img flex items-center justify-center">
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { FiAward, FiClock, FiArrowRight, FiShield, FiTrendingUp } from 'react-icons/fi';
+import CountdownTimer from './CountdownTimer';
+import BookingModal from './BookingModal';
+
+export default function DiamondCard({ plan, index }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const filledPercent = Math.floor(Math.random() * 25 + 60); // 60-85% filled
+  const remainingSlots = Math.max(1, plan.totalEntries - Math.floor((plan.totalEntries * filledPercent) / 100));
+
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: index * 0.05, duration: 0.4 }}
+        whileHover={{ y: -5 }}
+        className="relative group h-full flex flex-col"
+      >
+        {/* Card Frame */}
+        <div className="relative rounded-2xl overflow-hidden transition-all duration-300 bg-[#0c0d16] border border-white/[0.08] group-hover:border-[#D4AF37]/45 group-hover:shadow-[0_16px_40px_rgba(0,0,0,0.7)] flex flex-col justify-between flex-grow">
+          {/* Top Gold Accent Line */}
+          <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent group-hover:via-[#D4AF37] transition-all duration-500" />
+
+          {/* Plan Visual Banner with Integrated Overlay Details */}
+          <div className="relative w-full h-44 sm:h-48 overflow-hidden bg-gradient-to-b from-[#141525] to-[#0c0d16] border-b border-white/[0.06]">
+            {plan.image ? (
               <img
                 src={plan.image}
                 alt={`${plan.tier} Prize Allocation`}
                 loading="lazy"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0c0d16] via-transparent to-black/20 pointer-events-none" />
-              <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between pointer-events-none">
-                <span className="px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md border border-white/10 text-[10px] font-semibold text-gray-200 uppercase tracking-wider shadow-sm">
-                  Official Prize Bundle
-                </span>
-                <span className="px-2 py-0.5 rounded-md bg-[#D4AF37]/20 backdrop-blur-md border border-[#D4AF37]/40 text-[10px] font-mono font-bold text-[#D4AF37]">
-                  ₹{plan.price}
-                </span>
-              </div>
-            </div>
-          )}
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-4xl">💎</div>
+            )}
+            {/* Vignette Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0c0d16] via-black/20 to-black/60 pointer-events-none" />
 
-          {/* Body Section */}
-          <div className="p-6 sm:p-7 space-y-6 flex-grow flex flex-col justify-between">
-            {/* Prize Rewards List */}
-            <div className="space-y-2.5">
-              <div className="text-[10px] text-gray-500 font-bold uppercase tracking-[0.25em]">
-                Featured Prize Tier
+            {/* Top Badges */}
+            <div className="absolute top-2.5 left-3 right-3 flex items-center justify-between pointer-events-none">
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md border border-white/15 text-[10px] uppercase font-bold tracking-wider text-[#D4AF37]">
+                <FiAward size={10} />
+                <span>{plan.badge || plan.tier}</span>
+              </span>
+              <span className="px-2 py-0.5 rounded-md bg-black/80 backdrop-blur-md border border-white/10 text-[9px] font-mono font-bold text-gray-300 tracking-wider">
+                SERIES #{plan.badge?.replace('TIER ', '') || '01'}
+              </span>
+            </div>
+
+            {/* Bottom Overlay: Price Pill & Verification Seal */}
+            <div className="absolute bottom-2.5 left-3 right-3 flex items-end justify-between pointer-events-none">
+              <div className="bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/15 shadow-lg">
+                <span className="text-[9px] text-gray-400 uppercase tracking-widest font-semibold block leading-none mb-0.5">Entry</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-2xl font-black text-white font-display leading-none">
+                    ₹{plan.price}
+                  </span>
+                  <span className="text-[10px] text-gray-400 font-semibold">INR</span>
+                </div>
               </div>
-              <div className="space-y-2">
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#D4AF37]/20 backdrop-blur-md border border-[#D4AF37]/40 text-[#D4AF37] text-[10px] font-mono font-bold shadow-md">
+                <FiShield size={10} /> VERIFIED
+              </span>
+            </div>
+          </div>
+
+          {/* Compact Professional Details Body */}
+          <div className="p-4 sm:p-4.5 space-y-3 flex-grow flex flex-col justify-between">
+            {/* 1. Prize Allocation Ledger */}
+            <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-2.5 space-y-1.5">
+              <div className="flex items-center justify-between text-[10px] text-gray-400 uppercase tracking-wider font-semibold">
+                <span className="flex items-center gap-1 text-[#D4AF37]">
+                  <FiAward size={11} />
+                  <span>Prize Allocation</span>
+                </span>
+                <span className="text-gray-500 font-mono text-[9px]">{plan.products.length} Guaranteed</span>
+              </div>
+              <div className="divide-y divide-white/[0.04]">
                 {plan.products.map((item, i) => (
-                  <div key={i} className="flex items-center gap-2.5 text-xs sm:text-sm text-gray-300">
-                    <div className="w-4 h-4 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center flex-shrink-0 text-[#D4AF37]">
-                      <FiCheck size={10} />
-                    </div>
-                    <span className="font-medium truncate">{item}</span>
+                  <div key={i} className="flex items-center justify-between py-1 text-xs">
+                    <span className="text-gray-200 truncate font-medium max-w-[210px]">{item}</span>
+                    <span className="text-[10px] font-mono text-[#D4AF37]/80 font-bold ml-2">#{i + 1}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Allocation Progress */}
-            <div className="space-y-2 pt-2 border-t border-white/[0.04]">
-              <div className="flex justify-between items-center text-[11px]">
-                <span className="text-gray-400 font-medium">Pool Allocation</span>
-                <span className="text-[#D4AF37] font-semibold font-mono">{filledPercent}% filled</span>
+            {/* 2. Structured Metrics Grid */}
+            <div className="grid grid-cols-3 gap-1 py-1.5 px-1 rounded-xl bg-white/[0.02] border border-white/[0.05] text-center">
+              <div>
+                <div className="text-[9px] text-gray-500 uppercase tracking-wider font-semibold">Winners</div>
+                <div className="text-xs font-bold text-white font-mono mt-0.5">{plan.totalWinners} Confirmed</div>
               </div>
-              <div className="h-1.5 w-full bg-white/[0.05] rounded-full overflow-hidden">
+              <div className="border-x border-white/[0.06]">
+                <div className="text-[9px] text-gray-500 uppercase tracking-wider font-semibold">Pool Cap</div>
+                <div className="text-xs font-bold text-white font-mono mt-0.5">{plan.totalEntries}</div>
+              </div>
+              <div>
+                <div className="text-[9px] text-gray-500 uppercase tracking-wider font-semibold">Remaining</div>
+                <div className="text-xs font-bold text-[#D4AF37] font-mono mt-0.5">{remainingSlots}</div>
+              </div>
+            </div>
+
+            {/* 3. Pool Allocation Bar */}
+            <div className="space-y-1">
+              <div className="flex justify-between items-center text-[10px]">
+                <span className="text-gray-400 font-medium flex items-center gap-1">
+                  <FiTrendingUp size={10} className="text-[#D4AF37]" /> Allocation Pool
+                </span>
+                <span className="text-[#D4AF37] font-mono font-bold">{filledPercent}% filled</span>
+              </div>
+              <div className="h-1.5 w-full bg-white/[0.06] rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: `${filledPercent}%` }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 + 0.3, duration: 0.8 }}
+                  transition={{ duration: 0.6 }}
                   className="h-full bg-gradient-to-r from-amber-600 via-[#D4AF37] to-amber-300 rounded-full"
                 />
               </div>
-              <div className="flex justify-between text-[10px] text-gray-500 pt-0.5">
-                <span>{plan.totalEntries - Math.floor((plan.totalEntries * filledPercent) / 100)} slots remaining</span>
-                <span>{plan.totalEntries} Total</span>
-              </div>
             </div>
 
-            {/* Live Draw Countdown */}
-            <div className="bg-white/[0.02] border border-white/[0.05] rounded-2xl p-3 text-center">
-              <div className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold flex items-center justify-center gap-1.5 mb-1.5">
-                <FiClock size={11} className="text-[#D4AF37]" /> Verified Draw Schedule
+            {/* 4. Sleek Inline Draw Schedule Countdown */}
+            <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-white/[0.02] border border-white/[0.05]">
+              <div className="flex items-center gap-1.5 text-[10px] text-gray-400 uppercase tracking-wider font-semibold">
+                <FiClock size={11} className="text-[#D4AF37]" />
+                <span>Draw Closes</span>
               </div>
               <CountdownTimer
-                initialDays={Math.floor(Math.random() * 20 + 40)}
-                initialHours={Math.floor(Math.random() * 24)}
-                initialMins={Math.floor(Math.random() * 60)}
+                variant="compact"
+                initialDays={plan.countdown?.days ?? 2}
+                initialHours={plan.countdown?.hours ?? 12}
+                initialMins={plan.countdown?.mins ?? 30}
               />
             </div>
 
-            {/* Meta Stats Bar */}
-            <div className="flex items-center justify-between text-[11px] text-gray-400 border-t border-white/[0.06] pt-3">
-              <span className="flex items-center gap-1.5">
-                <FiAward size={13} className="text-[#D4AF37]" />
-                <span>{plan.totalWinners} Confirmed Winner{plan.totalWinners > 1 ? 's' : ''}</span>
-              </span>
-              <span className="flex items-center gap-1.5">
-                <FiUsers size={13} className="text-gray-500" />
-                <span>{plan.totalEntries} Entries</span>
-              </span>
-            </div>
-
-            {/* CTA Button */}
+            {/* 5. Clean CTA Button */}
             <button
               onClick={() => setIsModalOpen(true)}
-              className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37] text-black font-extrabold text-xs tracking-wider uppercase flex items-center justify-center gap-2 hover:opacity-95 transition-all shadow-[0_4px_20px_rgba(212,175,55,0.2)] cursor-pointer group-hover:scale-[1.01]"
+              className="w-full py-2.5 sm:py-3 px-4 rounded-xl bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37] text-black font-extrabold text-xs tracking-wider uppercase flex items-center justify-center gap-2 hover:opacity-95 transition-all shadow-[0_4px_16px_rgba(212,175,55,0.18)] cursor-pointer group-hover:scale-[1.01]"
             >
               <span>Enter Draw • ₹{plan.price}</span>
-              <FiArrowRight size={14} />
+              <FiArrowRight size={13} />
             </button>
           </div>
         </div>

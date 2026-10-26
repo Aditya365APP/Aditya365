@@ -9,7 +9,7 @@ function Digit({ value, label }) {
   );
 }
 
-export default function CountdownTimer({ initialDays = 0, initialHours = 0, initialMins = 0 }) {
+export default function CountdownTimer({ initialDays = 0, initialHours = 0, initialMins = 0, variant = 'default' }) {
   const [seconds, setSeconds] = useState(
     initialDays * 86400 + initialHours * 3600 + initialMins * 60
   );
@@ -29,6 +29,29 @@ export default function CountdownTimer({ initialDays = 0, initialHours = 0, init
     return (
       <div className="flex items-center gap-1.5 justify-center">
         <span className="live-badge">DRAW LIVE</span>
+      </div>
+    );
+  }
+
+  if (variant === 'compact') {
+    return (
+      <div className="flex items-center gap-1 font-mono text-[11px]">
+        {d > 0 && (
+          <span className="px-1.5 py-0.5 rounded bg-white/[0.05] border border-white/[0.08] text-[#D4AF37] font-bold">
+            {d}d
+          </span>
+        )}
+        <span className="px-1.5 py-0.5 rounded bg-white/[0.05] border border-white/[0.08] text-gray-200 font-bold">
+          {String(h).padStart(2, '0')}h
+        </span>
+        <span className="text-gray-600 font-bold text-[10px]">:</span>
+        <span className="px-1.5 py-0.5 rounded bg-white/[0.05] border border-white/[0.08] text-gray-200 font-bold">
+          {String(m).padStart(2, '0')}m
+        </span>
+        <span className="text-gray-600 font-bold text-[10px]">:</span>
+        <span className="px-1.5 py-0.5 rounded bg-white/[0.05] border border-white/[0.08] text-amber-400 font-bold">
+          {String(s).padStart(2, '0')}s
+        </span>
       </div>
     );
   }
