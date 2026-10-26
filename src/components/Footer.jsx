@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiInstagram, FiTwitter, FiFacebook, FiYoutube, FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
+import { FiInstagram, FiTwitter, FiFacebook, FiYoutube, FiMail, FiPhone, FiMapPin, FiShield, FiCheckCircle, FiAward, FiCreditCard, FiUsers } from 'react-icons/fi';
 
 const footerLinks = {
   // Original: 'Lottery Plans': [
@@ -8,8 +8,12 @@ const footerLinks = {
     // Original: { label: 'Diamond Lottery', to: '/diamond' },
     { label: 'Diamond Draw', to: '/diamond' },
     { label: 'Alfa Beta Plans', to: '/alfa-beta' },
+    /* ORIGINAL CODE:
     { label: 'Spin & Win', to: '/#spin' },
     { label: 'Daily Bonus', to: '/#bonus' },
+    */
+    { label: 'How It Works', to: '/#how-it-works' },
+    { label: 'Verified Results', to: '/winners' },
   ],
   'Company': [
     { label: 'About Us', to: '/about' },
@@ -69,7 +73,8 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center gap-3 text-gray-500 text-sm">
                   <FiPhone className="text-yellow-500 flex-shrink-0" size={14} />
-                  +91 98765 43210
+                  {/* ORIGINAL CODE: +91 98765 43210 */}
+                  +91 99599 95646
                 </div>
                 <div className="flex items-center gap-3 text-gray-500 text-sm">
                   <FiMapPin className="text-yellow-500 flex-shrink-0" size={14} />
@@ -128,10 +133,26 @@ export default function Footer() {
           </div>
 
           {/* Trust badges */}
+          {/* ORIGINAL CODE:
           <div className="mt-12 pt-8 border-t border-white/5 flex flex-wrap gap-4 justify-center">
             {['🔒 SSL Secured', '✅ Certified Fair Draw', '🏛️ Legally Registered', '💳 Safe Payments', '🏆 5000+ Winners'].map(badge => (
               <div key={badge} className="px-4 py-2 rounded-full border border-white/10 text-gray-500 text-xs font-medium">
                 {badge}
+              </div>
+            ))}
+          </div>
+          */}
+          <div className="mt-12 pt-8 border-t border-white/5 flex flex-wrap gap-3 sm:gap-4 justify-center">
+            {[
+              { icon: FiShield, text: '256-Bit SSL Secured' },
+              { icon: FiCheckCircle, text: 'Certified Fair PRNG' },
+              { icon: FiAward, text: 'Legally Registered Entity' },
+              { icon: FiCreditCard, text: 'Razorpay Verified Gateway' },
+              { icon: FiUsers, text: '50,000+ Verified Winners' }
+            ].map(({ icon: BadgeIcon, text }, i) => (
+              <div key={i} className="px-4 py-2 rounded-full border border-white/10 text-gray-400 text-xs font-medium flex items-center gap-2 bg-white/[0.02]">
+                <BadgeIcon className="text-[#D4AF37]" size={13} />
+                <span>{text}</span>
               </div>
             ))}
           </div>

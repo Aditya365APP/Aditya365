@@ -8,8 +8,13 @@ export default function AlfaBeta() {
       {/* Hero */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-20 text-center relative z-10">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
+          {/* ORIGINAL CODE:
           <div className="inline-flex items-center gap-2 bg-[#FF2D55]/10 border border-[#FF2D55]/20 px-6 py-2 rounded-full mb-8">
             <span className="text-[#FF2D55] text-xs font-bold uppercase tracking-[0.3em]">🎯 Color-Coded Plans</span>
+          </div>
+          */}
+          <div className="inline-flex items-center gap-2 bg-[#FF2D55]/10 border border-[#FF2D55]/20 px-6 py-2 rounded-full mb-8">
+            <span className="text-[#FF2D55] text-xs font-bold uppercase tracking-[0.3em]">Tier-Structured Plans</span>
           </div>
           <h1 className="font-display text-5xl sm:text-7xl md:text-9xl font-black mb-6 tracking-tighter">
             <span className="gradient-text-red italic">Alfa Beta</span>
@@ -52,7 +57,10 @@ export default function AlfaBeta() {
           viewport={{ once: true }}
           className="mt-16 luxury-card overflow-x-auto"
         >
+          {/* ORIGINAL CODE:
           <h3 className="font-display text-2xl font-bold text-white mb-6">📊 Plan Comparison</h3>
+          */}
+          <h3 className="font-display text-2xl font-bold text-white mb-6">Plan Comparison Matrix</h3>
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-white/10">

@@ -44,8 +44,14 @@ export default function DiamondCard({ plan, index }) {
               </div>
 
               {/* Minimalist Icon Capsule */}
+              {/* ORIGINAL CODE:
               <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-2xl group-hover:scale-105 group-hover:border-[#D4AF37]/30 transition-all duration-300">
                 {plan.emoji || '💎'}
+              </div>
+              */}
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#D4AF37]/15 to-transparent border border-[#D4AF37]/25 flex flex-col items-center justify-center group-hover:scale-105 group-hover:border-[#D4AF37]/50 transition-all duration-300 shadow-lg">
+                <span className="text-[10px] font-mono font-bold tracking-widest text-[#D4AF37] leading-none">#{plan.badge?.replace('TIER ', '') || '01'}</span>
+                <span className="text-[9px] uppercase font-bold text-gray-400 tracking-wider mt-1">SERIES</span>
               </div>
             </div>
           </div>

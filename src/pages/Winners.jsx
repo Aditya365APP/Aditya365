@@ -8,6 +8,7 @@ export default function Winners() {
   const [search, setSearch] = useState('');
 
   // Generate more dummy winners
+  /* ORIGINAL CODE:
   const allWinners = [
     ...liveWinners,
     { name: 'Suresh Kumar', city: 'Chennai', prize: 'Activa 6G', plan: 'Beta 501', time: '2 hours ago', avatar: '👨', amount: '₹85,000' },
@@ -16,6 +17,16 @@ export default function Winners() {
     { name: 'Manoj Singh', city: 'Patna', prize: 'LG OLED TV', plan: 'Diamond ₹699', time: '1 day ago', avatar: '👨', amount: '₹1,10,000' },
     { name: 'Pooja Verma', city: 'Lucknow', prize: 'Voltas AC', plan: 'Diamond ₹499', time: '1 day ago', avatar: '👩', amount: '₹35,000' },
     { name: 'Raj Patel', city: 'Ahmedabad', prize: 'Royal Enfield', plan: 'Diamond ₹999', time: '2 days ago', avatar: '👨', amount: '₹2,20,000' },
+  ];
+  */
+  const allWinners = [
+    ...liveWinners,
+    { name: 'Suresh Kumar', city: 'Chennai', prize: 'Activa 6G', plan: 'Beta 501', time: '2 hours ago', avatar: 'SK', amount: '₹85,000' },
+    { name: 'Neha Gupta', city: 'Delhi', prize: 'iPad Air', plan: 'Delta 401', time: '3 hours ago', avatar: 'NG', amount: '₹60,000' },
+    { name: 'Kishan L.', city: 'Surat', prize: 'Prestige Kitchen', plan: 'Diamond ₹399', time: '5 hours ago', avatar: 'KL', amount: '₹12,000' },
+    { name: 'Manoj Singh', city: 'Patna', prize: 'LG OLED TV', plan: 'Diamond ₹699', time: '1 day ago', avatar: 'MS', amount: '₹1,10,000' },
+    { name: 'Pooja Verma', city: 'Lucknow', prize: 'Voltas AC', plan: 'Diamond ₹499', time: '1 day ago', avatar: 'PV', amount: '₹35,000' },
+    { name: 'Raj Patel', city: 'Ahmedabad', prize: 'Royal Enfield', plan: 'Diamond ₹999', time: '2 days ago', avatar: 'RP', amount: '₹2,20,000' },
   ];
 
   const filtered = allWinners.filter(w => {

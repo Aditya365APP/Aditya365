@@ -9,8 +9,11 @@ export const diamondPlans = [
     gradient: 'from-purple-900 via-purple-800 to-indigo-900',
     accentColor: '#bf5af2',
     glowColor: 'rgba(191, 90, 242, 0.4)',
+    /* ORIGINAL CODE:
     badge: '🏆 PLAN 1',
-    badgeBg: 'bg-purple-600',
+    emoji: '🏍️',
+    */
+    badge: 'TIER 01',
     emoji: '🏍️',
     totalWinners: 1,
     totalEntries: 1000,
@@ -26,8 +29,11 @@ export const diamondPlans = [
     gradient: 'from-yellow-900 via-yellow-800 to-amber-900',
     accentColor: '#ffd700',
     glowColor: 'rgba(255, 215, 0, 0.4)',
+    /* ORIGINAL CODE:
     badge: '⭐ PLAN 2',
-    badgeBg: 'bg-yellow-600',
+    emoji: '📱',
+    */
+    badge: 'TIER 02',
     emoji: '📱',
     totalWinners: 2,
     totalEntries: 500,
@@ -42,8 +48,11 @@ export const diamondPlans = [
     gradient: 'from-gray-800 via-slate-700 to-gray-900',
     accentColor: '#a8c0cc',
     glowColor: 'rgba(168, 192, 204, 0.4)',
+    /* ORIGINAL CODE:
     badge: '🥈 PLAN 3',
-    badgeBg: 'bg-gray-500',
+    emoji: '🧊',
+    */
+    badge: 'TIER 03',
     emoji: '🧊',
     totalWinners: 3,
     totalEntries: 400,
@@ -58,8 +67,11 @@ export const diamondPlans = [
     gradient: 'from-blue-900 via-blue-800 to-cyan-900',
     accentColor: '#00d4ff',
     glowColor: 'rgba(0, 212, 255, 0.4)',
+    /* ORIGINAL CODE:
     badge: '💠 PLAN 4',
-    badgeBg: 'bg-blue-600',
+    emoji: '📺',
+    */
+    badge: 'TIER 04',
     emoji: '📺',
     totalWinners: 3,
     totalEntries: 350,
@@ -74,8 +86,11 @@ export const diamondPlans = [
     gradient: 'from-green-900 via-emerald-800 to-teal-900',
     accentColor: '#00ff88',
     glowColor: 'rgba(0, 255, 136, 0.4)',
+    /* ORIGINAL CODE:
     badge: '💚 PLAN 5',
-    badgeBg: 'bg-green-600',
+    emoji: '📷',
+    */
+    badge: 'TIER 05',
     emoji: '📷',
     totalWinners: 5,
     totalEntries: 300,
@@ -90,8 +105,11 @@ export const diamondPlans = [
     gradient: 'from-cyan-900 via-sky-800 to-blue-900',
     accentColor: '#38bdf8',
     glowColor: 'rgba(56, 189, 248, 0.4)',
+    /* ORIGINAL CODE:
     badge: '❄️ PLAN 6',
-    badgeBg: 'bg-sky-600',
+    emoji: '❄️',
+    */
+    badge: 'TIER 06',
     emoji: '❄️',
     totalWinners: 5,
     totalEntries: 250,
@@ -106,8 +124,11 @@ export const diamondPlans = [
     gradient: 'from-orange-900 via-amber-800 to-red-900',
     accentColor: '#fb923c',
     glowColor: 'rgba(251, 146, 60, 0.4)',
+    /* ORIGINAL CODE:
     badge: '🔶 PLAN 7',
-    badgeBg: 'bg-orange-600',
+    emoji: '🍽️',
+    */
+    badge: 'TIER 07',
     emoji: '🍽️',
     totalWinners: 10,
     totalEntries: 200,
@@ -122,8 +143,11 @@ export const diamondPlans = [
     gradient: 'from-amber-900 via-orange-800 to-brown-900',
     accentColor: '#cd7f32',
     glowColor: 'rgba(205, 127, 50, 0.4)',
+    /* ORIGINAL CODE:
     badge: '🥉 PLAN 8',
-    badgeBg: 'bg-amber-700',
+    emoji: '🎮',
+    */
+    badge: 'TIER 08',
     emoji: '🎮',
     totalWinners: 10,
     totalEntries: 150,
@@ -138,7 +162,12 @@ export const diamondPlans = [
     gradient: 'from-rose-900 via-pink-800 to-red-900',
     accentColor: '#f43f5e',
     glowColor: 'rgba(244, 63, 94, 0.4)',
+    /* ORIGINAL CODE:
     badge: '🌸 PLAN 9',
+    emoji: '🎧',
+    */
+    badge: 'TIER 09',
+    emoji: '🎧',
     badgeBg: 'bg-rose-600',
     emoji: '🎧',
     totalWinners: 15,
@@ -242,6 +271,7 @@ export const alfaBetaPlans = [
 ];
 
 // Live Winners Data
+/* ORIGINAL CODE:
 export const liveWinners = [
   { name: 'Rahul S.', city: 'Mumbai', prize: 'Royal Enfield Bike', plan: 'Diamond ₹999', time: '2 min ago', avatar: '👨' },
   { name: 'Priya K.', city: 'Bangalore', prize: 'iPhone 15 Pro', plan: 'Diamond ₹899', time: '5 min ago', avatar: '👩' },
@@ -252,8 +282,20 @@ export const liveWinners = [
   { name: 'Karan D.', city: 'Kolkata', prize: 'AC 1.5 Ton', plan: 'Diamond ₹499', time: '45 min ago', avatar: '🧑' },
   { name: 'Meera J.', city: 'Jaipur', prize: 'AirPods Pro', plan: 'Pai 101', time: '1 hr ago', avatar: '👩' },
 ];
+*/
+export const liveWinners = [
+  { name: 'Rahul S.', city: 'Mumbai', prize: 'Royal Enfield Bike', plan: 'Diamond ₹999', time: '2 min ago', avatar: 'RS' },
+  { name: 'Priya K.', city: 'Bangalore', prize: 'iPhone 15 Pro', plan: 'Diamond ₹899', time: '5 min ago', avatar: 'PK' },
+  { name: 'Amit M.', city: 'Delhi', prize: 'Sony 55" TV', plan: 'Diamond ₹699', time: '12 min ago', avatar: 'AM' },
+  { name: 'Sneha R.', city: 'Hyderabad', prize: 'MacBook Air', plan: 'Alfa 601', time: '18 min ago', avatar: 'SR' },
+  { name: 'Vikram T.', city: 'Chennai', prize: 'PlayStation 5', plan: 'Beta 501', time: '25 min ago', avatar: 'VT' },
+  { name: 'Anjali P.', city: 'Pune', prize: 'Samsung Fridge', plan: 'Diamond ₹799', time: '30 min ago', avatar: 'AP' },
+  { name: 'Karan D.', city: 'Kolkata', prize: 'AC 1.5 Ton', plan: 'Diamond ₹499', time: '45 min ago', avatar: 'KD' },
+  { name: 'Meera J.', city: 'Jaipur', prize: 'AirPods Pro', plan: 'Pai 101', time: '1 hr ago', avatar: 'MJ' },
+];
 
 // Testimonials
+/* ORIGINAL CODE:
 export const testimonials = [
   {
     name: 'Rahul Sharma',
@@ -294,6 +336,49 @@ export const testimonials = [
     plan: 'Alfa 601',
     date: 'March 2025',
     avatar: '✨',
+  },
+];
+*/
+export const testimonials = [
+  {
+    name: 'Rahul Sharma',
+    city: 'Mumbai, Maharashtra',
+    rating: 5,
+    comment: 'I won a Royal Enfield bike! I couldn\'t believe it. Aditya 365 is completely transparent and legit. Already recommended to 10+ colleagues!',
+    prize: 'Royal Enfield Classic 350',
+    plan: 'Diamond ₹999',
+    date: 'March 2025',
+    avatar: 'RS',
+  },
+  {
+    name: 'Priya Krishnan',
+    city: 'Bangalore, Karnataka',
+    rating: 5,
+    comment: 'Won an iPhone 15 Pro within my second entry! The website is super smooth and the process is fully transparent. Trust-worthy platform!',
+    prize: 'iPhone 15 Pro',
+    plan: 'Diamond ₹899',
+    date: 'February 2025',
+    avatar: 'PK',
+  },
+  {
+    name: 'Vikram Tiwari',
+    city: 'Delhi, NCR',
+    rating: 5,
+    comment: 'The draw process is so seamless! Won a Sony TV and the delivery was super fast. Highly recommend Aditya 365 to everyone!',
+    prize: 'Sony 55" Smart TV',
+    plan: 'Diamond ₹699',
+    date: 'January 2025',
+    avatar: 'VT',
+  },
+  {
+    name: 'Anjali Patel',
+    city: 'Pune, Maharashtra',
+    rating: 5,
+    comment: 'Got ₹1,50,000 worth prize from the Alfa plan! The referral bonus is amazing too. Made back my entry fees from referrals alone!',
+    prize: 'Alfa Grand Prize',
+    plan: 'Alfa 601',
+    date: 'March 2025',
+    avatar: 'AP',
   },
 ];
 

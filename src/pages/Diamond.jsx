@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { GiDiamonds } from 'react-icons/gi';
-import { FiFilter } from 'react-icons/fi';
+import { FiFilter, FiShield, FiAward, FiCreditCard } from 'react-icons/fi';
 import { useState } from 'react';
 import DiamondCard from '../components/DiamondCard';
 import { diamondPlans } from '../data/lotteryData';
@@ -73,6 +73,7 @@ export default function Diamond() {
           viewport={{ once: true }}
           className="glass-gold rounded-[2rem] p-10 grid grid-cols-1 sm:grid-cols-3 gap-10 text-center border-white/5"
         >
+          {/* ORIGINAL CODE:
           {[
             { icon: '🔐', title: 'Certified Fair Draw', desc: 'Independently audited RNG algorithms ensuring 100% transparent results for every player.' },
             { icon: '🏆', title: 'Luxury Deliveries', desc: 'From supercars to iPhones, we ensure your prizes reach you with white-glove service.' },
@@ -82,6 +83,20 @@ export default function Diamond() {
               <div className="text-5xl mb-6 filter drop-shadow-[0_0_15px_rgba(255,215,0,0.3)]">{icon}</div>
               <h3 className="text-white font-black text-lg mb-3 tracking-tight uppercase">{title}</h3>
               <p className="text-gray-500 text-sm font-light leading-relaxed">{desc}</p>
+            </div>
+          ))}
+          */}
+          {[
+            { icon: FiShield, title: 'Certified Fair Draw', desc: 'Independently audited RNG algorithms ensuring 100% transparent results for every participant.' },
+            { icon: FiAward, title: 'Luxury Deliveries', desc: 'From vehicles to smartphones, we ensure your prizes reach you with verified insured courier service.' },
+            { icon: FiCreditCard, title: 'Guaranteed Reserve', desc: 'Every entry builds your status. Non-winners accumulate prestige credits for future draws.' },
+          ].map(({ icon: InfoIcon, title, desc }) => (
+            <div key={title} className="flex flex-col items-center group">
+              <div className="w-16 h-16 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] text-2xl mb-5 group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(212,175,55,0.15)]">
+                <InfoIcon />
+              </div>
+              <h3 className="text-white font-bold text-base mb-2 tracking-tight uppercase">{title}</h3>
+              <p className="text-gray-400 text-xs font-light leading-relaxed">{desc}</p>
             </div>
           ))}
         </motion.div>

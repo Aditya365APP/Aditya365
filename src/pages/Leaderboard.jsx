@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { FiInfo } from 'react-icons/fi';
 import { leaderboard } from '../data/lotteryData';
 
 export default function Leaderboard() {
@@ -91,10 +92,20 @@ export default function Leaderboard() {
             </motion.div>
 
             {/* Info Box */}
+            {/* ORIGINAL CODE:
             <div className="mt-8 bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 flex gap-3 text-blue-400 items-start">
                <div className="text-xl">ℹ️</div>
                <p className="text-sm">
                   Top 3 players at the end of every month receive a special <strong>₹50,000 Wallet Bonus</strong> and guaranteed free entries in the Platinum draws!
+               </p>
+            </div>
+            */}
+            <div className="mt-8 glass-gold rounded-2xl p-5 flex gap-4 text-gray-300 items-start border border-[#D4AF37]/20 shadow-lg">
+               <div className="w-8 h-8 rounded-xl bg-[#D4AF37]/15 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] flex-shrink-0 text-base mt-0.5">
+                  <FiInfo />
+               </div>
+               <p className="text-xs sm:text-sm leading-relaxed text-gray-400">
+                  Top 3 participants at the end of every quarter receive a special <strong className="text-[#D4AF37] font-semibold">₹50,000 Wallet Bonus</strong> and priority allocation in our signature draws!
                </p>
             </div>
          </div>

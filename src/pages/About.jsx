@@ -43,13 +43,19 @@ export default function About() {
               We've replaced outdated systems with a modern platform that uses cryptographically secure random number generation (RNG) for every draw. From the moment you purchase an entry, you can track the live countdown, view the total entries, and watch the live results.
             </p>
             <div className="flex gap-4 pt-4">
-              <div className="bg-yellow-400/10 border border-yellow-400/30 p-4 rounded-xl text-center flex-1">
-                <div className="text-3xl font-bold text-yellow-400 font-mono mb-1">5L+</div>
-                <div className="text-gray-500 text-xs uppercase tracking-widest">Active Users</div>
+              <div className="bg-[#D4AF37]/10 border border-[#D4AF37]/30 p-4 rounded-xl text-center flex-1">
+                <div className="text-3xl font-bold text-[#D4AF37] font-mono mb-1">5L+</div>
+                <div className="text-gray-400 text-xs uppercase tracking-widest font-semibold">Active Members</div>
               </div>
+              {/* ORIGINAL CODE:
               <div className="bg-red-500/10 border border-red-500/30 p-4 rounded-xl text-center flex-1">
                 <div className="text-3xl font-bold text-red-500 font-mono mb-1">₹10Cr</div>
                 <div className="text-gray-500 text-xs uppercase tracking-widest">Paid Out</div>
+              </div>
+              */}
+              <div className="bg-[#D4AF37]/10 border border-[#D4AF37]/30 p-4 rounded-xl text-center flex-1">
+                <div className="text-3xl font-bold text-[#D4AF37] font-mono mb-1">₹10Cr+</div>
+                <div className="text-gray-400 text-xs uppercase tracking-widest font-semibold">Disbursed</div>
               </div>
             </div>
           </motion.div>
@@ -68,22 +74,35 @@ export default function About() {
                 <p className="text-xs text-gray-500 uppercase tracking-widest mt-1">Institutional Security</p>
               </div>
               <div className="luxury-card h-56 flex flex-col justify-center items-center text-center group bg-[#0a0a18]">
-                {/* ORIGINAL CODE: <div className="text-5xl mb-3 group-hover:rotate-12 transition-transform">🎰</div> */}
-                <div className="text-5xl mb-3 group-hover:rotate-12 transition-transform">🏆</div>
+                {/* ORIGINAL CODE: 
+                <div className="text-5xl mb-3 group-hover:rotate-12 transition-transform">🏆</div> 
+                */}
+                <div className="w-14 h-14 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] text-2xl mb-3 group-hover:scale-110 transition-transform shadow-lg">
+                  <FiAward />
+                </div>
                 <h3 className="font-bold text-[#D4AF37] text-lg">Fair Play</h3>
                 <p className="text-xs text-gray-500 uppercase tracking-widest mt-1">Certified RNG</p>
               </div>
             </div>
             <div className="space-y-4">
+              {/* ORIGINAL CODE:
               <div className="luxury-card h-48 flex flex-col justify-center items-center text-center" style={{ background: 'linear-gradient(145deg, #1a0f12, #2a151b)' }}>
                 <FiAward size={32} className="text-red-500 mb-2" />
                 <h3 className="font-bold text-red-400">Real Winners</h3>
                 <p className="text-xs text-gray-400">Prizes shipped pan-India</p>
               </div>
-              <div className="luxury-card h-40 flex flex-col justify-center items-center text-center">
-                <FiUsers size={32} className="text-blue-400 mb-2" />
-                <h3 className="font-bold text-white">24/7 Support</h3>
-                <p className="text-xs text-gray-500">Always here to help</p>
+              */}
+              <div className="luxury-card h-48 flex flex-col justify-center items-center text-center border-white/10 group">
+                <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-[#D4AF37] mb-2 group-hover:scale-110 transition-transform">
+                  <FiAward size={24} />
+                </div>
+                <h3 className="font-bold text-white">Verified Winners</h3>
+                <p className="text-xs text-gray-400 mt-0.5">Insured pan-India dispatch</p>
+              </div>
+              <div className="luxury-card h-40 flex flex-col justify-center items-center text-center group">
+                <FiUsers size={28} className="text-gray-300 mb-2 group-hover:scale-110 transition-transform" />
+                <h3 className="font-bold text-white">24/7 Desk</h3>
+                <p className="text-xs text-gray-500">Dedicated assistance</p>
               </div>
             </div>
           </motion.div>

@@ -173,6 +173,7 @@ export default function Home() {
           </motion.div>
 
           {/* Trust row */}
+          {/* ORIGINAL CODE:
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -187,6 +188,25 @@ export default function Home() {
             ].map((item, i) => (
               <span key={i} className="text-gray-400 text-xs uppercase tracking-wider font-semibold flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06]">
                 {item}
+              </span>
+            ))}
+          </motion.div>
+          */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1 }}
+            className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-12"
+          >
+            {[
+              { icon: FiShield, text: '256-Bit SSL Encrypted' },
+              { icon: FiCheckCircle, text: 'Certified PRNG Algorithms' },
+              { icon: FiAward, text: '₹10+ Crore Disbursed' },
+              { icon: FiCreditCard, text: 'Razorpay Verified Gateway' }
+            ].map(({ icon: TrustIcon, text }, i) => (
+              <span key={i} className="text-gray-400 text-xs uppercase tracking-wider font-semibold flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.06] hover:border-[#D4AF37]/30 transition-colors">
+                <TrustIcon className="text-[#D4AF37]" size={13} />
+                <span>{text}</span>
               </span>
             ))}
           </motion.div>
@@ -243,8 +263,8 @@ export default function Home() {
                 className="flex flex-wrap gap-3"
               >
                 {visibleWinners.map((w, i) => (
-                  <div key={i} className="flex items-center gap-2 glass px-4 py-2 rounded-full text-sm">
-                    <span>{w.avatar}</span>
+                  <div key={i} className="flex items-center gap-2.5 glass px-4 py-2 rounded-full text-sm border-white/[0.08]">
+                    <span className="w-6 h-6 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/30 text-[#D4AF37] text-[10px] font-bold font-mono inline-flex items-center justify-center">{w.avatar}</span>
                     <span className="text-yellow-400 font-bold">{w.name}</span>
                     <span className="text-gray-500">from {w.city} won</span>
                     <span className="text-white font-medium">{w.prize}</span>
@@ -271,9 +291,13 @@ export default function Home() {
               {/* ORIGINAL CODE: <span className="text-yellow-400 text-sm font-bold uppercase tracking-widest">Diamond Lottery</span> */}
               <span className="text-yellow-400 text-sm font-bold uppercase tracking-widest">Diamond Draw</span>
             </div>
+            {/* ORIGINAL CODE:
             <h2 className="section-title text-white mb-3">
-              {/* ORIGINAL CODE: 💎 <span className="gradient-text">Diamond</span> Lottery Box */}
               💎 <span className="gradient-text">Diamond</span> Reward Box
+            </h2>
+            */}
+            <h2 className="section-title text-white mb-3">
+              <span className="gradient-text">Diamond</span> Signature Series
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
               Premium plans with life-changing prizes. From bikes to smartphones — every entry is a chance to win big!
@@ -306,11 +330,19 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-14"
           >
+            {/* ORIGINAL CODE:
             <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/20 px-4 py-2 rounded-full mb-4">
               <span className="text-red-400 text-sm font-bold uppercase tracking-widest">🎯 Alfa Beta System</span>
             </div>
             <h2 className="section-title text-white mb-3">
               🎯 <span className="gradient-text-red">Alfa Beta</span> Plans
+            </h2>
+            */}
+            <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/20 px-4 py-2 rounded-full mb-4">
+              <span className="text-red-400 text-xs font-bold uppercase tracking-widest">Tier-Structured Plans</span>
+            </div>
+            <h2 className="section-title text-white mb-3">
+              <span className="gradient-text-red">Alfa Beta</span> Tier System
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
               Six color-coded plans with different entry fees and prize pools. Choose your lucky color!
@@ -391,7 +423,12 @@ export default function Home() {
                 className="luxury-card space-y-4"
               >
                 <div className="flex items-center gap-3">
+                  {/* ORIGINAL CODE:
                   <div className="w-12 h-12 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center text-2xl">
+                    {t.avatar}
+                  </div>
+                  */}
+                  <div className="w-11 h-11 rounded-2xl bg-[#0c0d16] border border-[#D4AF37]/30 flex items-center justify-center text-xs font-bold font-mono text-[#D4AF37] shadow-md flex-shrink-0">
                     {t.avatar}
                   </div>
                   <div>
@@ -482,16 +519,26 @@ export default function Home() {
               style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.2) 0%, transparent 60%)' }}
             />
             <div className="relative z-10">
+              {/* ORIGINAL CODE:
               <div className="text-5xl mb-4">🏆</div>
+              */}
+              <div className="w-16 h-16 rounded-3xl bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] text-3xl mx-auto mb-6 shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+                <FiAward />
+              </div>
               <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
-                Ready to <span className="gradient-text">Win Big?</span>
+                Ready to <span className="gradient-text">Participate?</span>
               </h2>
               <p className="text-gray-400 text-lg mb-8 max-w-xl mx-auto">
-                Join 5 lakh+ members winning prizes every 3 months. Start with just ₹101 and change your life!
+                Join 5 lakh+ members winning prizes every quarter. Start with just ₹101 and change your life!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                {/* ORIGINAL CODE:
                 <Link to="/diamond" className="btn-gold px-8 py-4 rounded-full text-lg font-bold">
                   🚀 View Plans
+                </Link>
+                */}
+                <Link to="/diamond" className="btn-gold px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase inline-flex items-center justify-center gap-2">
+                  <GiDiamonds /> Explore Diamond Series
                 </Link>
               </div>
             </div>

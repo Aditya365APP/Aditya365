@@ -33,6 +33,7 @@ export default function CountdownTimer({ initialDays = 0, initialHours = 0, init
     );
   }
 
+  {/* ORIGINAL CODE:
   return (
     <div className="flex items-end gap-2">
       {d > 0 && <Digit value={d} label="days" />}
@@ -41,6 +42,18 @@ export default function CountdownTimer({ initialDays = 0, initialHours = 0, init
       <span className="text-yellow-500 font-bold text-xl pb-5">:</span>
       <Digit value={m} label="min" />
       <span className="text-yellow-500 font-bold text-xl pb-5">:</span>
+      <Digit value={s} label="sec" />
+    </div>
+  );
+  */}
+  return (
+    <div className="flex items-end justify-center gap-1 sm:gap-2">
+      {d > 0 && <Digit value={d} label="days" />}
+      {d > 0 && <span className="text-[#D4AF37] font-mono font-bold text-sm sm:text-base pb-3 opacity-60">:</span>}
+      <Digit value={h} label="hrs" />
+      <span className="text-[#D4AF37] font-mono font-bold text-sm sm:text-base pb-3 opacity-60">:</span>
+      <Digit value={m} label="min" />
+      <span className="text-[#D4AF37] font-mono font-bold text-sm sm:text-base pb-3 opacity-60">:</span>
       <Digit value={s} label="sec" />
     </div>
   );
