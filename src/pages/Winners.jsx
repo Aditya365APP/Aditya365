@@ -30,13 +30,13 @@ export default function Winners() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-20 text-center">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
           <div className="inline-flex items-center gap-2 bg-[#D4AF37]/10 border border-[#D4AF37]/20 px-6 py-2 rounded-full mb-8">
-            <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">🏆 Live Results</span>
+            <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">Verified Results Ledger</span>
           </div>
           <h1 className="font-display text-5xl sm:text-7xl md:text-9xl font-black mb-6 tracking-tighter">
             Mega <span className="gradient-text italic">Winners</span>
           </h1>
           <p className="text-gray-400 max-w-3xl mx-auto text-lg font-light leading-relaxed">
-            Real people, extraordinary wins. Explore our wall of fame featuring the latest lucky winners from the Aditya 365 Mega Draw.
+            Real people, extraordinary wins. Transparent ledger of confirmed winners across India.
           </p>
         </motion.div>
       </div>
@@ -82,17 +82,14 @@ export default function Winners() {
               >
                 <div className="flex items-center gap-6 w-full sm:w-auto">
                   <div className="relative group">
-                    <div className="absolute inset-0 bg-[#D4AF37] blur-xl opacity-0 group-hover:opacity-20 transition-opacity" />
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#D4AF37] to-[#B8860B] p-0.5 relative z-10 shadow-2xl">
-                      <div className="w-full h-full bg-[#050510] rounded-2xl flex items-center justify-center text-3xl border border-white/10">
-                        {w.avatar}
-                      </div>
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#D4AF37]/20 to-transparent p-0.5 relative z-10 border border-[#D4AF37]/30 flex items-center justify-center font-mono font-black text-[#D4AF37] text-lg shadow-xl">
+                      {w.name ? w.name.split(' ').map(p => p[0]).join('').slice(0, 2).toUpperCase() : 'W'}
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-black text-white mb-1 tracking-tight">{w.name}</h3>
-                    <p className="text-gray-500 text-sm font-medium flex items-center gap-2 tracking-wide uppercase">
-                      <FiMapPin className="text-[#D4AF37]" /> {w.city}
+                    <h3 className="text-xl sm:text-2xl font-black text-white mb-1 tracking-tight">{w.name}</h3>
+                    <p className="text-gray-400 text-xs font-medium flex items-center gap-1.5 uppercase tracking-wider">
+                      <FiMapPin className="text-[#D4AF37]" size={13} /> {w.city}
                     </p>
                   </div>
                 </div>

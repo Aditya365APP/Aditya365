@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FiShield, FiAward, FiUsers, FiZap, FiChevronRight, FiStar } from 'react-icons/fi';
+import { FiShield, FiAward, FiUsers, FiZap, FiChevronRight, FiStar, FiUserCheck, FiCreditCard, FiCheckCircle } from 'react-icons/fi';
 import { GiDiamonds, GiTrophy, GiWallet } from 'react-icons/gi';
 import DiamondCard from '../components/DiamondCard';
 import AlfaBetaCard from '../components/AlfaBetaCard';
@@ -29,10 +29,10 @@ function JackpotCounter() {
 
 
 const trustStats = [
-  { icon: GiTrophy, value: '50,000+', label: 'Winners', color: '#ffd700' },
-  { icon: FiUsers, value: '5 Lakh+', label: 'Members', color: '#00d4ff' },
-  { icon: GiWallet, value: '₹10 Crore+', label: 'Prizes Given', color: '#30d158' },
-  { icon: FiAward, value: '99.9%', label: 'Payout Rate', color: '#bf5af2' },
+  { icon: GiTrophy, value: '50,000+', label: 'Verified Winners', color: '#D4AF37' },
+  { icon: FiUsers, value: '5 Lakh+', label: 'Active Members', color: '#E5C07B' },
+  { icon: GiWallet, value: '₹10 Crore+', label: 'Prizes Disbursed', color: '#C5A059' },
+  { icon: FiAward, value: '100%', label: 'Certified Fair Draws', color: '#D4AF37' },
 ];
 
 export default function Home() {
@@ -160,15 +160,15 @@ export default function Home() {
           >
             <Link
               to="/diamond"
-              className="btn-gold px-8 py-4 rounded-full text-lg inline-flex items-center gap-2"
+              className="btn-gold px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase inline-flex items-center justify-center gap-2"
             >
-              <GiDiamonds /> View Diamond Plans
+              <GiDiamonds /> Explore Diamond Series
             </Link>
             <Link
               to="/alfa-beta"
-              className="btn-outline-gold px-8 py-4 rounded-full text-lg inline-flex items-center gap-2"
+              className="btn-outline-gold px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase inline-flex items-center justify-center gap-2"
             >
-              🎯 Alfa Beta Plans
+              Explore Alfa Beta Plans
             </Link>
           </motion.div>
 
@@ -179,8 +179,15 @@ export default function Home() {
             transition={{ delay: 1.1 }}
             className="flex flex-wrap justify-center gap-6 mt-12"
           >
-            {['🔒 100% Secure', '✅ Certified Fair', '🏆 50,000+ Winners', '💳 Instant Payout'].map((item, i) => (
-              <span key={i} className="text-gray-500 text-sm flex items-center gap-1.5">{item}</span>
+            {[
+              '🔒 256-Bit SSL Encrypted',
+              '⚖️ Certified PRNG Algorithms',
+              '🏆 ₹10+ Crore Disbursed',
+              '💳 Razorpay Verified Merchant'
+            ].map((item, i) => (
+              <span key={i} className="text-gray-400 text-xs uppercase tracking-wider font-semibold flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06]">
+                {item}
+              </span>
             ))}
           </motion.div>
         </motion.div>
@@ -332,29 +339,25 @@ export default function Home() {
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 relative">
             {[
-              { step: '01', icon: '🔐', title: 'Register Free', desc: 'Create your account and get ₹500 welcome bonus.' },
-              { step: '02', icon: '💳', title: 'Add to Wallet', desc: 'Recharge your wallet via UPI, card or net banking.' },
-              // ORIGINAL CODE: { step: '03', icon: '🎫', title: 'Buy Entries', desc: 'Choose a plan and buy lottery entries instantly.' },
-              { step: '03', icon: '🎫', title: 'Buy Entries', desc: 'Choose a plan and buy contest entries instantly.' },
-              { step: '04', icon: '🏆', title: 'Win Prizes!', desc: 'Certified random draw declares winners. Prizes delivered home!' },
-            ].map(({ step, icon, title, desc }, i) => (
+              { step: '01', icon: FiUserCheck, title: 'Select Your Plan', desc: 'Browse our Diamond or Alfa Beta prize portfolios.' },
+              { step: '02', icon: FiCreditCard, title: 'Secure Checkout', desc: 'Pay instantly via UPI, Card, or Net Banking with Razorpay.' },
+              { step: '03', icon: FiCheckCircle, title: 'Instant Ticket', desc: 'Receive your unique digital serial ticket via SMS & WhatsApp.' },
+              { step: '04', icon: FiAward, title: 'Audited Draw', desc: 'Certified PRNG draws with insured doorstep prize handover.' },
+            ].map(({ step, icon: StepIcon, title, desc }, i) => (
               <motion.div
                 key={step}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
-                className="relative text-center"
+                className="relative text-center bg-[#0c0d16] border border-white/[0.06] rounded-2xl p-6 hover:border-[#D4AF37]/30 transition-colors"
               >
-                {i < 3 && (
-                  <div className="hidden sm:block absolute top-8 left-[60%] right-0 h-px bg-gradient-to-r from-yellow-500/50 to-transparent z-0" />
-                )}
-                <div className="bg-yellow-400/10 border border-yellow-400/30 p-4 rounded-xl text-center flex items-center justify-center text-3xl mx-auto mb-4 relative z-10">
-                  {icon}
+                <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center text-[#D4AF37] mx-auto mb-4 text-xl">
+                  <StepIcon />
                 </div>
-                <div className="text-yellow-500 font-mono text-xs font-bold uppercase tracking-widest mb-1">{step}</div>
-                <h3 className="text-white font-bold text-lg mb-2">{title}</h3>
-                <p className="text-gray-500 text-sm">{desc}</p>
+                <div className="text-[#D4AF37] font-mono text-[10px] font-bold uppercase tracking-widest mb-1.5">{step}</div>
+                <h3 className="text-white font-bold text-base mb-1.5">{title}</h3>
+                <p className="text-gray-400 text-xs leading-relaxed">{desc}</p>
               </motion.div>
             ))}
           </div>

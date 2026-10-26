@@ -1,129 +1,126 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { FiAward, FiUsers, FiClock, FiCheck, FiArrowRight } from 'react-icons/fi';
 import CountdownTimer from './CountdownTimer';
 import BookingModal from './BookingModal';
 
 export default function DiamondCard({ plan, index }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const filledPercent = Math.floor(Math.random() * 40 + 40); // 40-80% filled
+  const filledPercent = Math.floor(Math.random() * 35 + 45); // 45-80% filled
 
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ delay: index * 0.08, duration: 0.5 }}
-        whileHover={{ y: -8 }}
-        className="relative group lottery-card-3d"
+        transition={{ delay: index * 0.06, duration: 0.5 }}
+        whileHover={{ y: -6 }}
+        className="relative group"
       >
-        {/* Badge */}
+        {/* Card Frame */}
         <div
-          className={`plan-badge ${plan.badgeBg} text-white z-10`}
-          style={{ boxShadow: `0 0 15px ${plan.glowColor}` }}
+          className="relative rounded-[2rem] overflow-hidden transition-all duration-500 bg-[#0c0d16] border border-white/[0.08] group-hover:border-[#D4AF37]/40 group-hover:shadow-[0_20px_50px_rgba(212,175,55,0.08)] flex flex-col justify-between"
         >
-          {plan.badge}
-        </div>
+          {/* Subtle Top Accent */}
+          <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent group-hover:via-[#D4AF37] transition-all duration-700" />
 
-        {/* Card */}
-        <div
-          className="relative rounded-3xl overflow-hidden transition-all duration-700 group-hover:scale-[1.02] bg-[#050510]"
-          style={{
-            border: `1px solid rgba(255, 255, 255, 0.05)`,
-            boxShadow: `0 20px 40px rgba(0,0,0,0.4)`,
-          }}
-        >
-          {/* Noise overlay */}
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay" />
+          {/* Header Section */}
+          <div className="p-7 sm:p-8 border-b border-white/[0.06] relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/[0.03] rounded-full blur-3xl pointer-events-none" />
 
-          {/* Glow effect */}
-          <div
-            className="absolute -top-24 -left-24 w-48 h-48 rounded-full blur-[80px] opacity-0 group-hover:opacity-40 transition-opacity duration-1000"
-            style={{ background: plan.accentColor }}
-          />
-          {/* Gradient header */}
-          <div className={`relative p-8 overflow-hidden`}>
-            <div className={`absolute inset-0 bg-gradient-to-br ${plan.gradient} opacity-20`} />
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `radial-gradient(circle at 100% 0%, ${plan.accentColor}44 0%, transparent 60%)`,
-              }}
-            />
-            <div className="relative z-10 flex items-center justify-between">
+            <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-white/40 text-[10px] uppercase tracking-[0.3em] font-bold mb-1">{plan.tier}</p>
-                <p className="text-white font-display font-black text-4xl sm:text-5xl">₹{plan.price}</p>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-[10px] uppercase font-bold tracking-[0.2em] text-[#D4AF37] mb-3">
+                  <FiAward size={12} />
+                  <span>{plan.badge || plan.tier}</span>
+                </div>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
+                    ₹{plan.price}
+                  </span>
+                  <span className="text-[11px] text-gray-500 uppercase tracking-wider font-semibold">/ Entry</span>
+                </div>
               </div>
-              <motion.div
-                whileHover={{ rotate: 15, scale: 1.1 }}
-                className="text-5xl w-20 h-20 rounded-2xl flex items-center justify-center glass shadow-2xl"
-                style={{ border: `1px solid ${plan.accentColor}44` }}
-              >
-                {plan.emoji}
-              </motion.div>
+
+              {/* Minimalist Icon Capsule */}
+              <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-2xl group-hover:scale-105 group-hover:border-[#D4AF37]/30 transition-all duration-300">
+                {plan.emoji || '💎'}
+              </div>
             </div>
           </div>
 
-          {/* Body */}
-          <div className="p-5 space-y-4">
-            {/* Products */}
-            <div className="space-y-2">
-              {plan.products.map((p, i) => (
-                <div key={i} className="flex items-center gap-2 text-gray-400 text-sm">
-                  <div
-                    className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                    style={{ background: plan.accentColor }}
-                  />
-                  {p}
-                </div>
-              ))}
+          {/* Body Section */}
+          <div className="p-6 sm:p-7 space-y-6 flex-grow flex flex-col justify-between">
+            {/* Prize Rewards List */}
+            <div className="space-y-2.5">
+              <div className="text-[10px] text-gray-500 font-bold uppercase tracking-[0.25em]">
+                Featured Prize Tier
+              </div>
+              <div className="space-y-2">
+                {plan.products.map((item, i) => (
+                  <div key={i} className="flex items-center gap-2.5 text-xs sm:text-sm text-gray-300">
+                    <div className="w-4 h-4 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center flex-shrink-0 text-[#D4AF37]">
+                      <FiCheck size={10} />
+                    </div>
+                    <span className="font-medium truncate">{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Progress */}
-            <div>
-              <div className="flex justify-between text-xs text-gray-600 mb-1.5">
-                <span>{filledPercent}% filled</span>
-                <span>{plan.totalEntries - Math.floor(plan.totalEntries * filledPercent / 100)} left</span>
+            {/* Allocation Progress */}
+            <div className="space-y-2 pt-2 border-t border-white/[0.04]">
+              <div className="flex justify-between items-center text-[11px]">
+                <span className="text-gray-400 font-medium">Pool Allocation</span>
+                <span className="text-[#D4AF37] font-semibold font-mono">{filledPercent}% filled</span>
               </div>
-              <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
+              <div className="h-1.5 w-full bg-white/[0.05] rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: `${filledPercent}%` }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.08 + 0.5, duration: 1 }}
-                  className="h-full rounded-full progress-bar"
+                  transition={{ delay: index * 0.05 + 0.3, duration: 0.8 }}
+                  className="h-full bg-gradient-to-r from-amber-600 via-[#D4AF37] to-amber-300 rounded-full"
                 />
+              </div>
+              <div className="flex justify-between text-[10px] text-gray-500 pt-0.5">
+                <span>{plan.totalEntries - Math.floor((plan.totalEntries * filledPercent) / 100)} slots remaining</span>
+                <span>{plan.totalEntries} Total</span>
               </div>
             </div>
 
-            {/* Countdown */}
-            <div className="flex flex-col items-center py-2">
-              <p className="text-gray-600 text-xs uppercase tracking-widest mb-2">Draw in</p>
+            {/* Live Draw Countdown */}
+            <div className="bg-white/[0.02] border border-white/[0.05] rounded-2xl p-3 text-center">
+              <div className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold flex items-center justify-center gap-1.5 mb-1.5">
+                <FiClock size={11} className="text-[#D4AF37]" /> Verified Draw Schedule
+              </div>
               <CountdownTimer
-                initialDays={Math.floor(Math.random() * 30 + 60)}
+                initialDays={Math.floor(Math.random() * 20 + 40)}
                 initialHours={Math.floor(Math.random() * 24)}
                 initialMins={Math.floor(Math.random() * 60)}
               />
             </div>
 
-            {/* Stats */}
-            <div className="flex justify-between text-xs text-gray-600 border-t border-white/5 pt-3">
-              <span>🏆 {plan.totalWinners} winner{plan.totalWinners > 1 ? 's' : ''}</span>
-              <span>🎫 {plan.totalEntries} total entries</span>
+            {/* Meta Stats Bar */}
+            <div className="flex items-center justify-between text-[11px] text-gray-400 border-t border-white/[0.06] pt-3">
+              <span className="flex items-center gap-1.5">
+                <FiAward size={13} className="text-[#D4AF37]" />
+                <span>{plan.totalWinners} Confirmed Winner{plan.totalWinners > 1 ? 's' : ''}</span>
+              </span>
+              <span className="flex items-center gap-1.5">
+                <FiUsers size={13} className="text-gray-500" />
+                <span>{plan.totalEntries} Entries</span>
+              </span>
             </div>
 
-            {/* CTA */}
+            {/* CTA Button */}
             <button
               onClick={() => setIsModalOpen(true)}
-              className="w-full py-4 rounded-2xl font-bold text-sm tracking-widest uppercase transition-all duration-500 group-hover:scale-[1.05]"
-              style={{
-                background: `linear-gradient(135deg, ${plan.accentColor}, ${plan.accentColor}cc)`,
-                color: plan.accentColor === '#ffd700' || plan.accentColor === '#FFD60A' ? '#000' : '#fff',
-                boxShadow: `0 10px 30px -10px ${plan.glowColor}`,
-              }}
+              className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37] text-black font-extrabold text-xs tracking-wider uppercase flex items-center justify-center gap-2 hover:opacity-95 transition-all shadow-[0_4px_20px_rgba(212,175,55,0.2)] cursor-pointer group-hover:scale-[1.01]"
             >
-              Participate Now
+              <span>Enter Draw • ₹{plan.price}</span>
+              <FiArrowRight size={14} />
             </button>
           </div>
         </div>
@@ -134,7 +131,7 @@ export default function DiamondCard({ plan, index }) {
         onClose={() => setIsModalOpen(false)}
         planName={plan.badge || plan.tier}
         planPrice={plan.price}
-        themeColor={plan.accentColor}
+        themeColor="#D4AF37"
       />
     </>
   );

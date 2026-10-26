@@ -7,13 +7,13 @@ export default function Leaderboard() {
          <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-20 text-center">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
                <div className="inline-flex items-center gap-2 bg-[#D4AF37]/10 border border-[#D4AF37]/20 px-6 py-2 rounded-full mb-8">
-                  <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">🌟 Elite Rankings</span>
+                  <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">Member Hall of Fame</span>
                </div>
                <h1 className="font-display text-5xl sm:text-7xl md:text-9xl font-black mb-6 tracking-tighter">
                   Global <span className="gradient-text italic">Prestige</span>
                </h1>
                <p className="text-gray-400 text-lg sm:text-xl max-w-3xl mx-auto font-light leading-relaxed">
-                  Behold the legends of Aditya 365. The most active and fortunate players who have ascended the ranks of our global elite.
+                  The verified rankings of our most distinguished and rewarding draw participants.
                </p>
             </motion.div>
          </div>
@@ -23,28 +23,35 @@ export default function Leaderboard() {
                initial={{ opacity: 0, y: 30 }}
                animate={{ opacity: 1, y: 0 }}
                transition={{ delay: 0.2 }}
-               className="luxury-card overflow-hidden"
+               className="luxury-card overflow-hidden rounded-3xl border border-white/[0.08] bg-[#0c0d16]"
             >
-               <div className="bg-white/5 px-8 py-5 flex gap-4 text-white/40 text-[10px] font-bold uppercase tracking-[0.2em] border-b border-white/5">
+               <div className="bg-white/[0.03] px-8 py-5 flex gap-4 text-gray-400 text-[10px] font-bold uppercase tracking-[0.2em] border-b border-white/[0.06]">
                   <div className="w-12 text-center">Rank</div>
-                  <div className="flex-1">Prestige Player</div>
+                  <div className="flex-1">Member</div>
                   <div className="w-24 text-center hidden sm:block">Entries</div>
                   <div className="w-24 text-center hidden sm:block">Wins</div>
-                  <div className="w-32 text-right">Total Fortune</div>
+                  <div className="w-32 text-right">Cumulative Value</div>
                </div>
 
-               <div className="divide-y divide-white/[0.02]">
+               <div className="divide-y divide-white/[0.04]">
                   {leaderboard.map((user, i) => (
                      <motion.div
                         key={i}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.1, duration: 0.5 }}
-                        className={`flex items-center gap-6 px-8 py-6 transition-all duration-500 hover:bg-white/[0.03] ${i < 3 ? 'bg-[#D4AF37]/[0.02]' : ''
-                           }`}
+                        transition={{ delay: i * 0.08, duration: 0.4 }}
+                        className={`flex items-center gap-6 px-8 py-5 transition-all duration-300 hover:bg-white/[0.02] ${i < 3 ? 'bg-[#D4AF37]/[0.02]' : ''}`}
                      >
-                        <div className="w-12 text-center text-3xl font-black">
-                           {i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : <span className="text-white/10 font-sans text-xl">{i + 1}</span>}
+                        <div className="w-12 text-center">
+                           {i === 0 ? (
+                              <span className="w-7 h-7 rounded-full bg-[#D4AF37] text-black font-mono font-bold text-xs inline-flex items-center justify-center shadow-md">1</span>
+                           ) : i === 1 ? (
+                              <span className="w-7 h-7 rounded-full bg-slate-300 text-black font-mono font-bold text-xs inline-flex items-center justify-center shadow-md">2</span>
+                           ) : i === 2 ? (
+                              <span className="w-7 h-7 rounded-full bg-amber-700 text-white font-mono font-bold text-xs inline-flex items-center justify-center shadow-md">3</span>
+                           ) : (
+                              <span className="text-gray-500 font-mono text-xs font-semibold">{i + 1}</span>
+                           )}
                         </div>
 
                         <div className="flex-1 flex items-center gap-5">

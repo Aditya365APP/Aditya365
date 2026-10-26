@@ -33,11 +33,10 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-[#0a0a0f] text-white selection:bg-yellow-500/30">
-        {/* Global blur effects */}
-        <div className="fixed inset-0 pointer-events-none z-0">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/5 rounded-full blur-[120px]" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-yellow-500/5 rounded-full blur-[150px]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-[150px]" />
+        {/* Subtle executive ambient background lighting */}
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+          <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-amber-500/[0.04] via-yellow-600/[0.02] to-transparent rounded-full blur-[140px]" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-amber-500/[0.02] rounded-full blur-[160px]" />
         </div>
 
         <Navbar />

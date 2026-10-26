@@ -19,7 +19,7 @@ export default function Diamond() {
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
           <div className="inline-flex items-center gap-2 bg-[#D4AF37]/10 border border-[#D4AF37]/20 px-6 py-2 rounded-full mb-8">
             <GiDiamonds className="text-[#D4AF37]" />
-            <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">Premium High Roller</span>
+            <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">Signature Diamond Series</span>
           </div>
           <h1 className="font-display text-5xl sm:text-7xl md:text-9xl font-black mb-6 tracking-tighter">
             <span className="gradient-text italic">Diamond</span>

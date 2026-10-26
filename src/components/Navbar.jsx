@@ -69,8 +69,8 @@ export default function Navbar() {
 
           {/* Right side */}
           <div className="flex items-center gap-4">
-            <Link to="/diamond" className="btn-gold px-6 py-2.5 text-xs hidden sm:inline-block tracking-widest uppercase">
-              Play Now
+            <Link to="/diamond" className="btn-gold px-6 py-2.5 text-xs font-bold hidden sm:inline-block tracking-widest uppercase rounded-xl">
+              Explore Plans
             </Link>
 
             {/* Mobile menu */}
