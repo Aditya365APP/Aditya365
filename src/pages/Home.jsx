@@ -372,6 +372,7 @@ export default function Home() {
       </section>
 
       {/* ─── LIVE WINNERS TICKER ─── */}
+      {/* ORIGINAL CODE:
       <section className="py-6 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center gap-4">
@@ -391,6 +392,49 @@ export default function Home() {
                     <span className="text-gray-500">from {w.city} won</span>
                     <span className="text-white font-medium">{w.prize}</span>
                     <span className="text-gray-600 text-xs">• {w.time}</span>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+      */}
+      <section className="py-4 border-y border-white/[0.06] bg-[#0c0d16]/80 backdrop-blur-md overflow-hidden relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+              </span>
+              <span className="px-2.5 py-0.5 rounded-md bg-red-500/15 border border-red-500/30 text-red-400 text-[10px] font-extrabold uppercase tracking-widest font-mono">
+                LIVE
+              </span>
+            </div>
+
+            {/* Strict Single-Line Container with Edge Fade Masks */}
+            <div className="flex-1 overflow-hidden relative [mask-image:linear-gradient(to_right,transparent,black_3%,black_97%,transparent)]">
+              <motion.div
+                key={activeWinner}
+                initial={{ x: 50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -50, opacity: 0 }}
+                transition={{ duration: 0.45, ease: 'easeOut' }}
+                className="flex items-center flex-nowrap gap-3 whitespace-nowrap overflow-hidden"
+              >
+                {visibleWinners.map((w, i) => (
+                  <div
+                    key={i}
+                    className="flex-shrink-0 flex items-center gap-2.5 bg-white/[0.03] hover:bg-white/[0.06] px-3.5 py-1.5 rounded-full text-xs sm:text-sm border border-white/[0.08] transition-all shadow-sm"
+                  >
+                    <span className="w-5 h-5 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/40 text-[#D4AF37] text-[9px] font-bold font-mono inline-flex items-center justify-center flex-shrink-0">
+                      {w.avatar}
+                    </span>
+                    <span className="text-[#D4AF37] font-bold">{w.name}</span>
+                    <span className="text-gray-400 text-xs">from {w.city} won</span>
+                    <span className="text-white font-semibold text-xs">{w.prize}</span>
+                    <span className="text-gray-500 text-[11px] font-mono">• {w.time}</span>
                   </div>
                 ))}
               </motion.div>
