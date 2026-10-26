@@ -53,47 +53,37 @@ export default function DiamondCard({ plan, index }) {
           {/* Top Gold Accent Line */}
           <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent group-hover:via-[#D4AF37] transition-all duration-500" />
 
-          {/* Plan Visual Banner with Integrated Overlay Details */}
-          <div className="relative w-full h-44 sm:h-48 overflow-hidden bg-gradient-to-b from-[#141525] to-[#0c0d16] border-b border-white/[0.06]">
+          {/* Clean Card Header: Tier Badge, Series & Price (Above image so image is 100% unobstructed) */}
+          <div className="px-4 py-3 flex items-center justify-between border-b border-white/[0.06] bg-black/40">
+            <div className="flex items-center gap-2">
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#D4AF37]/15 border border-[#D4AF37]/35 text-[10px] font-bold text-[#D4AF37] tracking-wider uppercase">
+                <FiAward size={10} />
+                <span>{plan.badge || plan.tier}</span>
+              </span>
+              <span className="text-[10px] font-mono font-semibold text-gray-400">
+                #{plan.badge?.replace('TIER ', '') || '01'} SERIES
+              </span>
+            </div>
+            <div className="flex items-baseline gap-1 bg-[#D4AF37]/10 border border-[#D4AF37]/25 px-2.5 py-1 rounded-lg">
+              <span className="text-base sm:text-lg font-black text-white font-display leading-none">
+                ₹{plan.price}
+              </span>
+              <span className="text-[9px] text-[#D4AF37] font-semibold uppercase">/ Entry</span>
+            </div>
+          </div>
+
+          {/* Full Image Showcase (Aspect 4:3 matches the image resolution 1448x1086 perfectly, 100% visible, no crop, no obstructing overlay) */}
+          <div className="relative w-full aspect-[4/3] overflow-hidden bg-black/60 border-b border-white/[0.06] flex items-center justify-center">
             {plan.image ? (
               <img
                 src={plan.image}
                 alt={`${plan.tier} Prize Allocation`}
                 loading="lazy"
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                className="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-500 ease-out"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-4xl">💎</div>
             )}
-            {/* Vignette Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0c0d16] via-black/20 to-black/60 pointer-events-none" />
-
-            {/* Top Badges */}
-            <div className="absolute top-2.5 left-3 right-3 flex items-center justify-between pointer-events-none">
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md border border-white/15 text-[10px] uppercase font-bold tracking-wider text-[#D4AF37]">
-                <FiAward size={10} />
-                <span>{plan.badge || plan.tier}</span>
-              </span>
-              <span className="px-2 py-0.5 rounded-md bg-black/80 backdrop-blur-md border border-white/10 text-[9px] font-mono font-bold text-gray-300 tracking-wider">
-                SERIES #{plan.badge?.replace('TIER ', '') || '01'}
-              </span>
-            </div>
-
-            {/* Bottom Overlay: Price Pill & Verification Seal */}
-            <div className="absolute bottom-2.5 left-3 right-3 flex items-end justify-between pointer-events-none">
-              <div className="bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/15 shadow-lg">
-                <span className="text-[9px] text-gray-400 uppercase tracking-widest font-semibold block leading-none mb-0.5">Entry</span>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-black text-white font-display leading-none">
-                    ₹{plan.price}
-                  </span>
-                  <span className="text-[10px] text-gray-400 font-semibold">INR</span>
-                </div>
-              </div>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#D4AF37]/20 backdrop-blur-md border border-[#D4AF37]/40 text-[#D4AF37] text-[10px] font-mono font-bold shadow-md">
-                <FiShield size={10} /> VERIFIED
-              </span>
-            </div>
           </div>
 
           {/* Compact Professional Details Body */}
