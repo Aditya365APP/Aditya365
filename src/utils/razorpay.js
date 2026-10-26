@@ -3,8 +3,8 @@
  * Configured for Aditya 365
  */
 
-// Replace this with your actual Key ID from Razorpay Dashboard (starts with rzp_test_ or rzp_live_)
-export const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_placeholder';
+// Razorpay Key ID (Client-side Public Key)
+export const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_TsRk10ShxYfmhi';
 
 /**
  * Ensures Razorpay SDK is loaded
