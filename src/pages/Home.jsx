@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FiShield, FiAward, FiUsers, FiZap, FiChevronRight, FiStar, FiUserCheck, FiCreditCard, FiCheckCircle } from 'react-icons/fi';
+import { FiShield, FiAward, FiUsers, FiZap, FiChevronRight, FiStar, FiUserCheck, FiCreditCard, FiCheckCircle, FiArrowRight, FiClock, FiCheck } from 'react-icons/fi';
 import { GiDiamonds, GiTrophy, GiWallet } from 'react-icons/gi';
 import DiamondCard from '../components/DiamondCard';
 import AlfaBetaCard from '../components/AlfaBetaCard';
+import BookingModal from '../components/BookingModal';
+import CountdownTimer from '../components/CountdownTimer';
 import { diamondPlans, alfaBetaPlans, liveWinners, testimonials, faqs } from '../data/lotteryData';
 
 // Animated jackpot counter
-function JackpotCounter() {
+function JackpotCounter({ size = "normal" }) {
   const [value, setValue] = useState(1_24_35_678);
   useEffect(() => {
     const id = setInterval(() => {
@@ -17,9 +19,9 @@ function JackpotCounter() {
     return () => clearInterval(id);
   }, []);
   return (
-    <div className="flex items-center justify-center gap-1 sm:gap-2">
-      <span className="text-yellow-500 font-bold text-2xl sm:text-4xl">₹</span>
-      <div className="font-mono text-4xl sm:text-7xl font-black shimmer-text tracking-tighter sm:tracking-normal">
+    <div className="flex items-center justify-center gap-1 sm:gap-1.5">
+      <span className="text-[#D4AF37] font-bold text-xl sm:text-2xl font-mono">₹</span>
+      <div className={`font-mono font-black shimmer-text tracking-tight ${size === "compact" ? "text-2xl sm:text-3xl lg:text-[2.25rem]" : "text-3xl sm:text-5xl"}`}>
         {value.toLocaleString('en-IN')}
       </div>
     </div>
@@ -39,6 +41,7 @@ export default function Home() {
   const [activeWinner, setActiveWinner] = useState(0);
   const [visibleWinners, setVisibleWinners] = useState(liveWinners.slice(0, 3));
   const [openFaq, setOpenFaq] = useState(null);
+  const [isHeroModalOpen, setIsHeroModalOpen] = useState(false);
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const heroImages = [
@@ -69,9 +72,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* ─── HERO SECTION ─── */}
+      {/* ─── ORIGINAL HERO SECTION (PRESERVED AS REQUESTED):
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background Slider */}
         <div className="absolute inset-0 z-0">
           <AnimatePresence mode="wait">
             <motion.div
@@ -86,142 +88,262 @@ export default function Home() {
                 imageRendering: 'auto',
               }}
             >
-              {/* Ultra-minimal overlay for maximum clarity while keeping text readable */}
               <div className="absolute inset-0 bg-black/20" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#030305] via-transparent to-transparent opacity-60" />
             </motion.div>
           </AnimatePresence>
           <div className="hero-rings opacity-30" />
-
-          {/* Slider Indicators */}
           <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-3 z-10">
             {heroImages.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentImageIndex(i)}
-                className={`w-2 h-2 rounded-full transition-all duration-500 ${currentImageIndex === i ? 'bg-yellow-400 w-8' : 'bg-white/20'
-                  }`}
+                className={`w-2 h-2 rounded-full transition-all duration-500 ${currentImageIndex === i ? 'bg-yellow-400 w-8' : 'bg-white/20'}`}
+              />
+            ))}
+          </div>
+        </div>
+        <motion.div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-32 pb-20 text-center">
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 mb-8">
+            <span className="live-badge">QUARTERLY DRAWS</span>
+            <span className="text-gray-500 text-sm">Next Mega Draw</span>
+          </motion.div>
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }} className="font-display font-black leading-tight">
+            <span className="block text-white text-5xl sm:text-7xl md:text-9xl mb-2 tracking-tighter">Play Smart.</span>
+            <span className="block gradient-text text-6xl sm:text-8xl md:text-9xl neon-text-gold tracking-tight italic">Win Big</span>
+            <span className="block text-white/90 text-3xl sm:text-5xl md:text-6xl mt-4 font-light">Experience the Mega Draw 2026</span>
+          </motion.h1>
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="text-gray-400 text-lg sm:text-xl mt-6 max-w-2xl mx-auto">
+            India's #1 premier lucky draw platform — transparent draws, real prizes, real winners. Bikes, phones, TVs, AC and more await!
+          </motion.p>
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.7 }} className="mt-10 mb-8">
+            <p className="text-gray-500 text-sm uppercase tracking-widest mb-2">Total Prize Pool This Month</p>
+            <JackpotCounter />
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/diamond" className="btn-gold px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase inline-flex items-center justify-center gap-2">
+              <GiDiamonds /> Explore Diamond Series
+            </Link>
+            <Link to="/alfa-beta" className="btn-outline-gold px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase inline-flex items-center justify-center gap-2">
+              Explore Alfa Beta Plans
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
+      ─── END ORIGINAL HERO SECTION ─── */}
+
+      {/* ─── RECREATED EXECUTIVE LUXURY HERO COCKPIT ─── */}
+      <section className="relative min-h-[92vh] flex items-center pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden">
+        {/* Ambient Film Background & Horizon Lighting */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentImageIndex}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.4, ease: "easeOut" }}
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: `url(${heroImages[currentImageIndex]})`,
+              }}
+            >
+              {/* Luxury Obsidian Film Gradients */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#030305] via-[#030305]/95 to-[#030305]/75" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030305] via-transparent to-[#030305]/70" />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Precision Radial Glow Cones */}
+          <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-[#D4AF37]/[0.05] rounded-full blur-[140px]" />
+          <div className="absolute bottom-10 right-10 w-[600px] h-[600px] bg-amber-600/[0.04] rounded-full blur-[160px]" />
+          <div className="hero-rings opacity-20" />
+
+          {/* Discrete Background Slider Indicators */}
+          <div className="absolute bottom-6 left-8 sm:left-16 flex gap-2 z-10 pointer-events-auto">
+            {heroImages.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentImageIndex(i)}
+                className={`h-1.5 rounded-full transition-all duration-500 cursor-pointer ${
+                  currentImageIndex === i ? 'bg-[#D4AF37] w-8' : 'bg-white/20 w-3 hover:bg-white/40'
+                }`}
+                aria-label={`Slide ${i + 1}`}
               />
             ))}
           </div>
         </div>
 
-        <motion.div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-32 pb-20 text-center">
-          {/* Live badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 mb-8"
-          >
-            <span className="live-badge">QUARTERLY DRAWS</span>
-            <span className="text-gray-500 text-sm">Next Mega Draw</span>
-          </motion.div>
-
-          {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="font-display font-black leading-tight"
-          >
-            <span className="block text-white text-5xl sm:text-7xl md:text-9xl mb-2 tracking-tighter">Play Smart.</span>
-            <span className="block gradient-text text-6xl sm:text-8xl md:text-9xl neon-text-gold tracking-tight italic">Win Big</span>
-            <span className="block text-white/90 text-3xl sm:text-5xl md:text-6xl mt-4 font-light">Experience the Mega Draw 2026</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="text-gray-400 text-lg sm:text-xl mt-6 max-w-2xl mx-auto"
-          >
-            {/* ORIGINAL CODE: India's #1 premium lottery platform — transparent draws, real prizes, real winners. Bikes, phones, TVs, AC and more await! */}
-            India's #1 premier lucky draw platform — transparent draws, real prizes, real winners. Bikes, phones, TVs, AC and more await!
-          </motion.p>
-
-          {/* Jackpot counter */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.7 }}
-            className="mt-10 mb-8"
-          >
-            <p className="text-gray-500 text-sm uppercase tracking-widest mb-2">Total Prize Pool This Month</p>
-            <JackpotCounter />
-          </motion.div>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Link
-              to="/diamond"
-              className="btn-gold px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase inline-flex items-center justify-center gap-2"
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+            
+            {/* ─── LEFT COLUMN: Executive Presentation ─── */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-7 text-left space-y-6"
             >
-              <GiDiamonds /> Explore Diamond Series
-            </Link>
-            <Link
-              to="/alfa-beta"
-              className="btn-outline-gold px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase inline-flex items-center justify-center gap-2"
+              {/* Institutional Live Status Pill */}
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.03] border border-[#D4AF37]/30 backdrop-blur-md">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span className="text-[#D4AF37] text-[11px] font-bold uppercase tracking-[0.2em]">
+                  Live Digital Contests • Round 2026 Open
+                </span>
+              </div>
+
+              {/* Commanding Luxury Headline */}
+              <h1 className="font-display text-4xl sm:text-6xl lg:text-[4.25rem] font-black text-white leading-[1.08] tracking-tight">
+                Where Integrity Meets{' '}
+                <span className="gradient-text italic font-serif">Extraordinary</span>{' '}
+                Rewards.
+              </h1>
+
+              {/* Executive Subtitle Narrative */}
+              <p className="text-gray-300/80 text-base sm:text-lg max-w-2xl font-light leading-relaxed">
+                India’s premier certified reward platform. Experience cryptographically transparent draws starting from <span className="text-white font-medium">₹101</span>, with instant Razorpay checkout, live countdown telemetry, and guaranteed insured pan-India deliveries.
+              </p>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                <button
+                  onClick={() => setIsHeroModalOpen(true)}
+                  className="btn-gold px-8 py-4 rounded-xl text-xs sm:text-sm font-bold tracking-widest uppercase inline-flex items-center justify-center gap-2.5 cursor-pointer shadow-[0_10px_35px_rgba(212,175,55,0.3)] hover:scale-[1.02] active:scale-95 transition-transform"
+                >
+                  <GiDiamonds size={16} />
+                  <span>Enter Signature Draw</span>
+                  <FiArrowRight size={15} />
+                </button>
+
+                <Link
+                  to="/diamond"
+                  className="btn-outline-gold px-7 py-4 rounded-xl text-xs sm:text-sm font-bold tracking-widest uppercase inline-flex items-center justify-center gap-2 hover:border-[#D4AF37] hover:bg-white/[0.03]"
+                >
+                  Explore All 9 Plans
+                </Link>
+              </div>
+
+              {/* Quick Institutional Credential Metrics */}
+              <div className="pt-6 border-t border-white/[0.08] grid grid-cols-3 gap-4 max-w-lg">
+                <div className="space-y-1">
+                  <div className="font-mono text-xl sm:text-2xl font-black text-[#D4AF37]">₹10Cr+</div>
+                  <div className="text-gray-400 text-[10px] sm:text-xs uppercase tracking-wider font-medium">Prizes Disbursed</div>
+                </div>
+                <div className="space-y-1 border-x border-white/[0.08] px-3 sm:px-4">
+                  <div className="font-mono text-xl sm:text-2xl font-black text-white">50,000+</div>
+                  <div className="text-gray-400 text-[10px] sm:text-xs uppercase tracking-wider font-medium">Verified Winners</div>
+                </div>
+                <div className="space-y-1">
+                  <div className="font-mono text-xl sm:text-2xl font-black text-green-400">100%</div>
+                  <div className="text-gray-400 text-[10px] sm:text-xs uppercase tracking-wider font-medium">PRNG Audited</div>
+                </div>
+              </div>
+
+              {/* Compliance Badges */}
+              <div className="flex flex-wrap gap-4 pt-1 text-gray-400 text-[11px] font-medium">
+                <span className="flex items-center gap-1.5">
+                  <FiShield className="text-[#D4AF37]" size={13} /> 256-Bit SSL Encrypted
+                </span>
+                <span className="text-white/20 hidden sm:inline">•</span>
+                <span className="flex items-center gap-1.5">
+                  <FiCreditCard className="text-[#D4AF37]" size={13} /> Razorpay Verified Gateway
+                </span>
+                <span className="text-white/20 hidden sm:inline">•</span>
+                <span className="flex items-center gap-1.5">
+                  <FiCheckCircle className="text-[#D4AF37]" size={13} /> Section 194B TDS Compliant
+                </span>
+              </div>
+            </motion.div>
+
+            {/* ─── RIGHT COLUMN: Flagship Live Draw Cockpit Card ─── */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="lg:col-span-5"
             >
-              Explore Alfa Beta Plans
-            </Link>
-          </motion.div>
+              <div className="relative rounded-[2.25rem] p-6 sm:p-8 bg-gradient-to-b from-[#0f101c] via-[#0a0a14] to-[#06060c] border border-[#D4AF37]/35 shadow-[0_25px_80px_rgba(0,0,0,0.9),0_0_50px_rgba(212,175,55,0.1)] overflow-hidden">
+                
+                {/* Subtle Interior Glow */}
+                <div className="absolute top-0 right-0 w-48 h-48 bg-[#D4AF37]/[0.08] rounded-full blur-3xl pointer-events-none" />
 
-          {/* Trust row */}
-          {/* ORIGINAL CODE:
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1 }}
-            className="flex flex-wrap justify-center gap-6 mt-12"
-          >
-            {[
-              '🔒 256-Bit SSL Encrypted',
-              '⚖️ Certified PRNG Algorithms',
-              '🏆 ₹10+ Crore Disbursed',
-              '💳 Razorpay Verified Merchant'
-            ].map((item, i) => (
-              <span key={i} className="text-gray-400 text-xs uppercase tracking-wider font-semibold flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06]">
-                {item}
-              </span>
-            ))}
-          </motion.div>
-          */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1 }}
-            className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-12"
-          >
-            {[
-              { icon: FiShield, text: '256-Bit SSL Encrypted' },
-              { icon: FiCheckCircle, text: 'Certified PRNG Algorithms' },
-              { icon: FiAward, text: '₹10+ Crore Disbursed' },
-              { icon: FiCreditCard, text: 'Razorpay Verified Gateway' }
-            ].map(({ icon: TrustIcon, text }, i) => (
-              <span key={i} className="text-gray-400 text-xs uppercase tracking-wider font-semibold flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.06] hover:border-[#D4AF37]/30 transition-colors">
-                <TrustIcon className="text-[#D4AF37]" size={13} />
-                <span>{text}</span>
-              </span>
-            ))}
-          </motion.div>
-        </motion.div>
+                {/* Card Top Pill & Tier */}
+                <div className="flex items-center justify-between pb-4 border-b border-white/[0.08] relative z-10">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/30 text-[10px] font-mono font-bold uppercase tracking-widest text-[#D4AF37]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                    FLAGSHIP ROUND
+                  </div>
+                  <span className="text-[11px] font-mono font-bold text-gray-400 tracking-wider">
+                    PLAN 01 • ₹999
+                  </span>
+                </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-1">
-            <div className="w-1 h-3 bg-yellow-400 rounded-full animate-bounce" />
+                {/* Grand Prize Spotlight Banner */}
+                <div className="py-4 relative z-10 space-y-1">
+                  <div className="text-[10px] text-gray-400 uppercase tracking-[0.25em] font-semibold">
+                    Grand Trophy Prize
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+                    Royal Enfield Hunter 350
+                  </h3>
+                  <p className="text-xs text-[#D4AF37] font-medium">
+                    Plus Apple iPhone 16 Pro Max • Electric Scooty
+                  </p>
+                </div>
+
+                {/* Cumulative Monthly Pool Box */}
+                <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] my-2 text-center relative z-10">
+                  <div className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mb-1">
+                    Cumulative Draw Prize Pool
+                  </div>
+                  <JackpotCounter size="compact" />
+                </div>
+
+                {/* Live Chronometer Countdown */}
+                <div className="pt-2 pb-3 relative z-10">
+                  <div className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold text-center mb-2 flex items-center justify-center gap-1.5">
+                    <FiClock size={11} className="text-[#D4AF37]" /> Official Draw Telemetry Countdown
+                  </div>
+                  <CountdownTimer initialDays={42} initialHours={14} initialMins={38} />
+                </div>
+
+                {/* Capacity Allocation Bar */}
+                <div className="space-y-2 py-3 border-t border-white/[0.06] relative z-10">
+                  <div className="flex justify-between items-center text-[11px]">
+                    <span className="text-gray-400 font-medium">Entry Allocation</span>
+                    <span className="text-[#D4AF37] font-semibold font-mono">82% Filled</span>
+                  </div>
+                  <div className="h-2 w-full bg-white/[0.05] rounded-full overflow-hidden">
+                    <div className="h-full bg-gradient-to-r from-amber-600 via-[#D4AF37] to-amber-300 rounded-full w-[82%]" />
+                  </div>
+                  <div className="flex justify-between text-[10px] text-gray-500">
+                    <span>180 Slots Remaining</span>
+                    <span>1,000 Total Entries</span>
+                  </div>
+                </div>
+
+                {/* Direct Action Button */}
+                <div className="pt-2 relative z-10">
+                  <button
+                    onClick={() => setIsHeroModalOpen(true)}
+                    className="w-full py-4 rounded-xl bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37] text-black font-extrabold text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2 hover:opacity-95 transition-all shadow-[0_4px_25px_rgba(212,175,55,0.35)] cursor-pointer hover:scale-[1.01]"
+                  >
+                    <span>Instant Participation • ₹999</span>
+                    <FiArrowRight size={15} />
+                  </button>
+                  <p className="text-[10px] text-gray-500 text-center uppercase tracking-widest mt-2.5">
+                    Doorstep Insured Delivery • 100% Refund Guarantee
+                  </p>
+                </div>
+
+              </div>
+            </motion.div>
+
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* ─── STATS SECTION ─── */}
@@ -545,6 +667,15 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Hero Modal Booking Integration */}
+      <BookingModal
+        isOpen={isHeroModalOpen}
+        onClose={() => setIsHeroModalOpen(false)}
+        planName="Signature Plan 01"
+        planPrice={999}
+        themeColor="#D4AF37"
+      />
 
     </div>
   );
