@@ -117,8 +117,13 @@ export default function Terms() {
                 <span className="text-yellow-400">02.</span> Description of Services & Platform Use
               </h2>
               <div className="space-y-3 text-sm leading-relaxed text-gray-300">
+                {/* ORIGINAL CODE:
                 <p>
                   Aditya 365 operates an online promotional draws, rewards, and certified lucky draw portal. We offer access to structured lottery plans (such as Diamond, Alfa, and Beta series) where participants can purchase digital entry tickets, track live event countdowns, verify participant counts, and win monetary prizes or certified luxury rewards.
+                </p>
+                */}
+                <p>
+                  Aditya 365 operates an online promotional draws, rewards, and certified lucky draw portal. We offer access to structured reward plans (such as Diamond, Alfa, and Beta series) where participants can purchase digital entry tickets, track live event countdowns, verify participant counts, and win monetary prizes or certified luxury rewards.
                 </p>
                 <p>
                   We grant you a non-exclusive, non-transferable, revocable, and limited privilege to browse and transact on our website solely for personal, non-commercial use.
@@ -187,8 +192,13 @@ export default function Terms() {
                   <div className="text-white font-semibold flex items-center gap-2">
                     <FiCheckCircle className="text-green-400" /> Tax Deducted at Source (TDS) under Section 194B:
                   </div>
+                  {/* ORIGINAL CODE:
                   <p className="text-xs text-gray-400">
                     As mandated by the Income Tax Act, 1961, any winnings from online lottery or lucky draws exceeding ₹10,000 are subject to mandatory deduction of TDS at the prevailing statutory rate (currently 30% plus applicable surcharge and cess). A TDS certificate (Form 16A) will be issued to the winner following successful tax remittance.
+                  </p>
+                  */}
+                  <p className="text-xs text-gray-400">
+                    As mandated by the Income Tax Act, 1961, any winnings from promotional contests or lucky draws exceeding ₹10,000 are subject to mandatory deduction of TDS at the prevailing statutory rate (currently 30% plus applicable surcharge and cess). A TDS certificate (Form 16A) will be issued to the winner following successful tax remittance.
                   </p>
                 </div>
                 <p>

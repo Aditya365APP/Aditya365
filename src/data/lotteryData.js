@@ -301,7 +301,8 @@ export const testimonials = [
 export const faqs = [
   {
     q: 'How does Aditya 365 work?',
-    a: 'You purchase an entry ticket for your chosen lottery plan. We collect entries until the draw date, then use our certified random algorithm to select winners. Winners get their prizes delivered to their doorstep.',
+    // ORIGINAL CODE: a: 'You purchase an entry ticket for your chosen lottery plan. We collect entries until the draw date, then use our certified random algorithm to select winners. Winners get their prizes delivered to their doorstep.',
+    a: 'You purchase an entry ticket for your chosen reward draw plan. We collect entries until the draw date, then use our certified random algorithm to select winners. Winners get their prizes delivered to their doorstep.',
   },
   {
     q: 'Is Aditya 365 legit and safe?',
@@ -320,7 +321,8 @@ export const faqs = [
     a: 'Share your unique referral code. For every friend who registers, you get ₹100 bonus in your wallet. Your friend also gets ₹100 welcome bonus. No limit on referrals!',
   },
   {
-    q: 'When are the lottery draws conducted?',
+    // ORIGINAL CODE: q: 'When are the lottery draws conducted?',
+    q: 'When are the lucky draws conducted?',
     a: 'Each plan has its own countdown timer shown on the card. Draws happen automatically when the timer reaches zero or when all entries are filled. Results are posted live on the platform.',
   },
 ];

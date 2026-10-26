@@ -136,7 +136,8 @@ export default function Home() {
             transition={{ delay: 0.5 }}
             className="text-gray-400 text-lg sm:text-xl mt-6 max-w-2xl mx-auto"
           >
-            India's #1 premium lottery platform — transparent draws, real prizes, real winners. Bikes, phones, TVs, AC and more await!
+            {/* ORIGINAL CODE: India's #1 premium lottery platform — transparent draws, real prizes, real winners. Bikes, phones, TVs, AC and more await! */}
+            India's #1 premier lucky draw platform — transparent draws, real prizes, real winners. Bikes, phones, TVs, AC and more await!
           </motion.p>
 
           {/* Jackpot counter */}
@@ -260,10 +261,12 @@ export default function Home() {
           >
             <div className="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/20 px-4 py-2 rounded-full mb-4">
               <GiDiamonds className="text-yellow-400" />
-              <span className="text-yellow-400 text-sm font-bold uppercase tracking-widest">Diamond Lottery</span>
+              {/* ORIGINAL CODE: <span className="text-yellow-400 text-sm font-bold uppercase tracking-widest">Diamond Lottery</span> */}
+              <span className="text-yellow-400 text-sm font-bold uppercase tracking-widest">Diamond Draw</span>
             </div>
             <h2 className="section-title text-white mb-3">
-              💎 <span className="gradient-text">Diamond</span> Lottery Box
+              {/* ORIGINAL CODE: 💎 <span className="gradient-text">Diamond</span> Lottery Box */}
+              💎 <span className="gradient-text">Diamond</span> Reward Box
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
               Premium plans with life-changing prizes. From bikes to smartphones — every entry is a chance to win big!
@@ -331,7 +334,8 @@ export default function Home() {
             {[
               { step: '01', icon: '🔐', title: 'Register Free', desc: 'Create your account and get ₹500 welcome bonus.' },
               { step: '02', icon: '💳', title: 'Add to Wallet', desc: 'Recharge your wallet via UPI, card or net banking.' },
-              { step: '03', icon: '🎫', title: 'Buy Entries', desc: 'Choose a plan and buy lottery entries instantly.' },
+              // ORIGINAL CODE: { step: '03', icon: '🎫', title: 'Buy Entries', desc: 'Choose a plan and buy lottery entries instantly.' },
+              { step: '03', icon: '🎫', title: 'Buy Entries', desc: 'Choose a plan and buy contest entries instantly.' },
               { step: '04', icon: '🏆', title: 'Win Prizes!', desc: 'Certified random draw declares winners. Prizes delivered home!' },
             ].map(({ step, icon, title, desc }, i) => (
               <motion.div

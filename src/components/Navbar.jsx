@@ -49,7 +49,8 @@ export default function Navbar() {
               <span className="font-display font-black text-2xl tracking-tighter text-white leading-none uppercase">
                 Aditya <span className="text-[#D4AF37]">365</span>
               </span>
-              <span className="text-[8px] text-white/40 uppercase tracking-[0.4em] mt-1 font-bold">Premium Lottery Platform</span>
+              {/* ORIGINAL CODE: <span className="text-[8px] text-white/40 uppercase tracking-[0.4em] mt-1 font-bold">Premium Lottery Platform</span> */}
+              <span className="text-[8px] text-white/40 uppercase tracking-[0.4em] mt-1 font-bold">Premium Rewards Platform</span>
             </div>
           </Link>
 

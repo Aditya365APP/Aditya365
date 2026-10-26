@@ -3,8 +3,10 @@ import { motion } from 'framer-motion';
 import { FiInstagram, FiTwitter, FiFacebook, FiYoutube, FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 
 const footerLinks = {
-  'Lottery Plans': [
-    { label: 'Diamond Lottery', to: '/diamond' },
+  // Original: 'Lottery Plans': [
+  'Contest Plans': [
+    // Original: { label: 'Diamond Lottery', to: '/diamond' },
+    { label: 'Diamond Draw', to: '/diamond' },
     { label: 'Alfa Beta Plans', to: '/alfa-beta' },
     { label: 'Spin & Win', to: '/#spin' },
     { label: 'Daily Bonus', to: '/#bonus' },
@@ -50,11 +52,13 @@ export default function Footer() {
                   <div className="font-display font-black text-2xl text-white tracking-tighter uppercase leading-none">
                     ADITYA <span className="text-[#D4AF37]">365</span>
                   </div>
-                  <div className="text-[10px] text-white/40 uppercase tracking-[0.4em] mt-1 font-bold">Premium lottery</div>
+                  {/* Original: <div className="text-[10px] text-white/40 uppercase tracking-[0.4em] mt-1 font-bold">Premium lottery</div> */}
+                  <div className="text-[10px] text-white/40 uppercase tracking-[0.4em] mt-1 font-bold">Premium Rewards</div>
                 </div>
               </Link>
+              {/* Original: <p className="text-gray-500 text-sm leading-relaxed max-w-sm">The pinnacle of premium lottery experiences in India. We combine cutting-edge technology with transparent fairness to deliver life-changing opportunities daily.</p> */}
               <p className="text-gray-500 text-sm leading-relaxed max-w-sm">
-                The pinnacle of premium lottery experiences in India. We combine cutting-edge technology with transparent fairness to deliver life-changing opportunities daily.
+                The pinnacle of premium lucky draw & reward experiences in India. We combine cutting-edge technology with transparent fairness to deliver life-changing opportunities daily.
               </p>
 
               {/* Contact */}
@@ -134,8 +138,9 @@ export default function Footer() {
 
           {/* Bottom */}
           <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
+            {/* Original: <p className="text-gray-600 text-[10px] uppercase tracking-widest font-bold font-sans">© 2026 Aditya 365 • Crafted for High Rollers</p> */}
             <p className="text-gray-600 text-[10px] uppercase tracking-widest font-bold font-sans">
-              © 2026 Aditya 365 • Crafted for High Rollers
+              © 2026 Aditya 365 • Crafted for Winners
             </p>
             <div className="flex flex-wrap gap-4 sm:gap-6 text-gray-500 text-xs font-medium">
               <Link to="/terms" className="hover:text-[#D4AF37] transition-colors">Terms</Link>

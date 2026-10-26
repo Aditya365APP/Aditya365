@@ -31,7 +31,8 @@ export default function Faq() {
     ],
     refunds: [
       {
-        q: 'Can I cancel my lottery ticket once purchased?',
+        // ORIGINAL CODE: q: 'Can I cancel my lottery ticket once purchased?',
+        q: 'Can I cancel my draw entry ticket once purchased?',
         a: 'Due to the integrity and algorithmic structure of cryptographically scheduled draws, confirmed ticket entries cannot be cancelled once issued. However, if there was a technical error or duplicate debit, full refunds are promptly issued.',
       },
       {
@@ -59,7 +60,8 @@ export default function Faq() {
         a: 'Monetary prizes are transferred directly to the verified bank account or UPI ID of the registered winner via IMPS/NEFT after completion of standard KYC verification.',
       },
       {
-        q: 'Is Tax Deducted at Source (TDS) on lottery winnings?',
+        // ORIGINAL CODE: q: 'Is Tax Deducted at Source (TDS) on lottery winnings?',
+        q: 'Is Tax Deducted at Source (TDS) on contest & draw winnings?',
         a: 'Yes. As per Section 194B of the Indian Income Tax Act, 1961, any winnings exceeding ₹10,000 are subject to 30% TDS deduction. A formal Form 16A TDS certificate will be furnished to the winner for tax filing.',
       },
     ],

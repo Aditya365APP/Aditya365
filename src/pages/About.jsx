@@ -11,8 +11,13 @@ export default function About() {
             <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-black mb-6 tracking-tighter">
               About <span className="gradient-text italic">Aditya 365</span>
             </h1>
+            {/* ORIGINAL CODE:
             <p className="text-gray-400 text-lg sm:text-xl max-w-3xl mx-auto font-light leading-relaxed">
               The pinnacle of premium online lottery in India. Certified transparency meets cutting-edge technology to redefine your winning experience.
+            </p>
+            */}
+            <p className="text-gray-400 text-lg sm:text-xl max-w-3xl mx-auto font-light leading-relaxed">
+              The pinnacle of premium lucky draw & reward contests in India. Certified transparency meets cutting-edge technology to redefine your winning experience.
             </p>
           </motion.div>
         </div>
@@ -26,8 +31,13 @@ export default function About() {
             className="space-y-5"
           >
             <h2 className="text-3xl font-bold text-white">Our Mission</h2>
+            {/* ORIGINAL CODE:
             <p className="text-gray-400 leading-relaxed text-sm lg:text-base">
               Founded in 2023, Aditya 365 was built on a simple premise: lottery should be fair, accessible, and completely transparent.
+            </p>
+            */}
+            <p className="text-gray-400 leading-relaxed text-sm lg:text-base">
+              Founded in 2023, Aditya 365 was built on a simple premise: lucky draws and rewards should be fair, accessible, and completely transparent.
             </p>
             <p className="text-gray-400 leading-relaxed text-sm lg:text-base">
               We've replaced outdated systems with a modern platform that uses cryptographically secure random number generation (RNG) for every draw. From the moment you purchase an entry, you can track the live countdown, view the total entries, and watch the live results.
@@ -58,7 +68,8 @@ export default function About() {
                 <p className="text-xs text-gray-500 uppercase tracking-widest mt-1">Institutional Security</p>
               </div>
               <div className="luxury-card h-56 flex flex-col justify-center items-center text-center group bg-[#0a0a18]">
-                <div className="text-5xl mb-3 group-hover:rotate-12 transition-transform">🎰</div>
+                {/* ORIGINAL CODE: <div className="text-5xl mb-3 group-hover:rotate-12 transition-transform">🎰</div> */}
+                <div className="text-5xl mb-3 group-hover:rotate-12 transition-transform">🏆</div>
                 <h3 className="font-bold text-[#D4AF37] text-lg">Fair Play</h3>
                 <p className="text-xs text-gray-500 uppercase tracking-widest mt-1">Certified RNG</p>
               </div>

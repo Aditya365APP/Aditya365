@@ -155,7 +155,8 @@ export default function Privacy() {
               <div className="space-y-2 text-sm leading-relaxed text-gray-300">
                 <p>We process your personal data for the following lawful business purposes:</p>
                 <ul className="list-disc pl-5 space-y-1.5 text-gray-400">
-                  <li>Generating and validating your unique digital lottery entry tickets.</li>
+                  {/* ORIGINAL CODE: <li>Generating and validating your unique digital lottery entry tickets.</li> */}
+                  <li>Generating and validating your unique digital contest and lucky draw entry tickets.</li>
                   <li>Processing payments securely through authorized payment gateway aggregators.</li>
                   <li>Sending automated order confirmations, ticket receipt PDFs, and live draw alerts via SMS, WhatsApp, and email.</li>
                   <li>Verifying age, residency, and identity to comply with anti-fraud and anti-money laundering (AML) mandates.</li>
