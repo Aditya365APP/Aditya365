@@ -56,6 +56,27 @@ export default function DiamondCard({ plan, index }) {
             </div>
           </div>
 
+          {/* Plan Showcase Visual */}
+          {plan.image && (
+            <div className="relative w-full aspect-[4/3] max-h-56 sm:max-h-64 overflow-hidden bg-gradient-to-b from-[#141523] to-[#0c0d16] border-b border-white/[0.06] group/img flex items-center justify-center">
+              <img
+                src={plan.image}
+                alt={`${plan.tier} Prize Allocation`}
+                loading="lazy"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0c0d16] via-transparent to-black/20 pointer-events-none" />
+              <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between pointer-events-none">
+                <span className="px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md border border-white/10 text-[10px] font-semibold text-gray-200 uppercase tracking-wider shadow-sm">
+                  Official Prize Bundle
+                </span>
+                <span className="px-2 py-0.5 rounded-md bg-[#D4AF37]/20 backdrop-blur-md border border-[#D4AF37]/40 text-[10px] font-mono font-bold text-[#D4AF37]">
+                  ₹{plan.price}
+                </span>
+              </div>
+            </div>
+          )}
+
           {/* Body Section */}
           <div className="p-6 sm:p-7 space-y-6 flex-grow flex flex-col justify-between">
             {/* Prize Rewards List */}
