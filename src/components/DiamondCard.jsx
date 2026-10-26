@@ -53,27 +53,8 @@ export default function DiamondCard({ plan, index }) {
           {/* Top Gold Accent Line */}
           <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent group-hover:via-[#D4AF37] transition-all duration-500" />
 
-          {/* Clean Card Header: Tier Badge, Series & Price (Above image so image is 100% unobstructed) */}
-          <div className="px-4 py-3 flex items-center justify-between border-b border-white/[0.06] bg-black/40">
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#D4AF37]/15 border border-[#D4AF37]/35 text-[10px] font-bold text-[#D4AF37] tracking-wider uppercase">
-                <FiAward size={10} />
-                <span>{plan.badge || plan.tier}</span>
-              </span>
-              <span className="text-[10px] font-mono font-semibold text-gray-400">
-                #{plan.badge?.replace('TIER ', '') || '01'} SERIES
-              </span>
-            </div>
-            <div className="flex items-baseline gap-1 bg-[#D4AF37]/10 border border-[#D4AF37]/25 px-2.5 py-1 rounded-lg">
-              <span className="text-base sm:text-lg font-black text-white font-display leading-none">
-                ₹{plan.price}
-              </span>
-              <span className="text-[9px] text-[#D4AF37] font-semibold uppercase">/ Entry</span>
-            </div>
-          </div>
-
-          {/* Full Image Showcase (Aspect 4:3 matches the image resolution 1448x1086 perfectly, 100% visible, no crop, no obstructing overlay) */}
-          <div className="relative w-full aspect-[4/3] overflow-hidden bg-black/60 border-b border-white/[0.06] flex items-center justify-center">
+          {/* Full Image Showcase (Covers the top of the card completely with zero gap) */}
+          <div className="relative w-full aspect-[4/3] overflow-hidden bg-black/80 border-b border-white/[0.08] flex items-center justify-center group/img">
             {plan.image ? (
               <img
                 src={plan.image}
@@ -84,6 +65,32 @@ export default function DiamondCard({ plan, index }) {
             ) : (
               <div className="w-full h-full flex items-center justify-center text-4xl">💎</div>
             )}
+
+            {/* Subtle top shade so text is razor-sharp against the image ceiling */}
+            <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-black/85 via-black/40 to-transparent pointer-events-none" />
+
+            {/* High-Contrast Floating Header Overlays */}
+            <div className="absolute top-2.5 left-3 right-3 flex items-center justify-between pointer-events-none">
+              {/* Left: Tier Badge & Series */}
+              <div className="flex items-center gap-1.5">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-black/85 backdrop-blur-md border border-[#D4AF37]/50 text-[10px] font-black text-[#FFD700] tracking-wider uppercase shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                  <FiAward size={11} className="text-[#FFD700]" />
+                  <span>{plan.badge || plan.tier}</span>
+                </span>
+                <span className="px-2 py-0.5 rounded-md bg-black/80 backdrop-blur-md border border-white/20 text-[9px] font-mono font-bold text-white tracking-wider shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+                  #{plan.badge?.replace('TIER ', '') || '01'} SERIES
+                </span>
+              </div>
+
+              {/* Right: High-Contrast Price Capsule */}
+              <div className="flex items-baseline gap-1 bg-black/90 backdrop-blur-md border border-[#D4AF37]/60 px-2.5 py-1 rounded-lg shadow-[0_4px_12px_rgba(0,0,0,0.95)]">
+                <span className="text-sm font-bold text-[#FFD700]">₹</span>
+                <span className="text-base sm:text-lg font-black text-white font-display tracking-tight leading-none">
+                  {plan.price}
+                </span>
+                <span className="text-[9px] text-amber-300 font-extrabold uppercase tracking-wider ml-0.5">/ ENTRY</span>
+              </div>
+            </div>
           </div>
 
           {/* Compact Professional Details Body */}
