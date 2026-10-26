@@ -15,7 +15,7 @@ export default function BookingModal({ isOpen, onClose, planName, planPrice, the
   const [isProcessing, setIsProcessing] = useState(false);
   const [paymentSuccessData, setPaymentSuccessData] = useState(null);
 
-  const WHATSAPP_NUMBER = '919959995646';
+  const WHATSAPP_NUMBER = '917799399889';
 
   // Handle Online Payment via Razorpay
   const handleRazorpayPayment = async (e) => {

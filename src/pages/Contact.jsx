@@ -121,11 +121,11 @@ export default function Contact() {
                   <div>
                     <div className="text-xs text-gray-400 uppercase font-semibold tracking-wider">Direct Customer Helpline</div>
                     <div className="text-white text-sm font-medium mt-0.5">
-                      <a href="tel:+919959995646" className="hover:text-yellow-400 transition-colors block">
-                        +91 99599 95646
+                      <a href="tel:+917799399889" className="hover:text-yellow-400 transition-colors block">
+                        +91 77993 99889
                       </a>
-                      <a href="tel:+919876543210" className="hover:text-yellow-400 transition-colors text-xs text-gray-400 block mt-0.5">
-                        +91 98765 43210 (Toll-Free Escalations)
+                      <a href="https://wa.me/917799399889" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 transition-colors text-xs text-gray-400 block mt-0.5">
+                        WhatsApp: +91 77993 99889 (Instant Support)
                       </a>
                     </div>
                   </div>

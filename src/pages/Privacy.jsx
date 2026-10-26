@@ -301,7 +301,7 @@ export default function Privacy() {
                   </div>
                   <div className="flex items-center gap-3 text-sm text-gray-300">
                     <FiPhone className="text-yellow-400 flex-shrink-0" size={16} />
-                    <span>+91 99599 95646 / +91 98765 43210</span>
+                    <span>+91 77993 99889</span>
                   </div>
                   <div className="text-xs text-gray-400 pt-2 border-t border-white/5">
                     We acknowledge all formal privacy grievances within 24 to 48 hours and resolve queries within 15 working days.

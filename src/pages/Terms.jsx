@@ -318,7 +318,7 @@ export default function Terms() {
                   </div>
                   <div className="flex items-center gap-3 text-sm text-gray-300">
                     <FiPhone className="text-yellow-400 flex-shrink-0" size={16} />
-                    <span>+91 99599 95646 / +91 98765 43210</span>
+                    <span>+91 77993 99889</span>
                   </div>
                   <div className="text-xs text-gray-400 pt-2 border-t border-white/5">
                     Operating Hours: Monday – Saturday, 10:00 AM to 7:00 PM IST (Excluding National Holidays). Grievances are acknowledged within 24 hours and addressed within 15 business days.

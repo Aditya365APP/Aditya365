@@ -245,8 +245,8 @@ export default function RefundPolicy() {
                     <FiPhone className="text-yellow-400 flex-shrink-0" size={18} />
                     <div>
                       <div className="text-xs text-gray-400">WhatsApp / Call Desk</div>
-                      <a href="tel:+919959995646" className="text-white font-medium hover:text-yellow-400">
-                        +91 99599 95646 / +91 98765 43210
+                      <a href="tel:+917799399889" className="text-white font-medium hover:text-yellow-400">
+                        +91 77993 99889
                       </a>
                     </div>
                   </div>
