@@ -68,26 +68,50 @@ export default function Faq() {
   };
 
   return (
-    <div className="min-h-screen pt-28 pb-20 text-gray-300">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+    <div className="min-h-screen pt-20 pb-0 text-gray-300 relative flex flex-col justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
         
-        {/* Header */}
-        <div className="text-center mb-16">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-xs font-semibold uppercase tracking-widest mb-4">
-              <FiHelpCircle size={14} /> Help Center & Knowledge Base
+        {/* ─── COMPACT PAGE HERO ─── */}
+        <div className="pt-6 pb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45 }}
+            className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4"
+          >
+            {/* Left */}
+            <div>
+              <div className="inline-flex items-center gap-2 bg-[#D4AF37]/10 border border-[#D4AF37]/25 px-3.5 py-1 rounded-full mb-3">
+                <FiHelpCircle className="text-[#D4AF37] text-xs" />
+                <span className="text-[#D4AF37] text-[10px] font-bold uppercase tracking-[0.22em] font-mono">Knowledge Base</span>
+                <span className="text-[9px] text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-1.5 py-0.5 rounded-full font-semibold">Self-Service</span>
+              </div>
+              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-none text-white">
+                Help & <span className="gradient-text">FAQs</span>
+              </h1>
+              <p className="text-gray-400 text-sm mt-2 max-w-lg leading-relaxed">
+                Clear answers regarding payments, draw mechanisms, verification, and refunds.
+              </p>
             </div>
-            <h1 className="font-display text-4xl sm:text-6xl font-black text-white mb-4 tracking-tight">
-              Frequently Asked <span className="gradient-text">Questions</span>
-            </h1>
-            <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
-              Find transparent answers regarding payments, Razorpay security, draw procedures, and refund rules.
-            </p>
+
+            {/* Right: metrics */}
+            <div className="flex gap-5 sm:gap-7 flex-shrink-0">
+              {[
+                { label: 'Topics', value: '4' },
+                { label: 'Support', value: '24/7' },
+                { label: 'Disputes', value: 'Zero' },
+              ].map(({ label, value }) => (
+                <div key={label} className="text-center">
+                  <div className="text-lg sm:text-xl font-black font-mono text-[#D4AF37] leading-none">{value}</div>
+                  <div className="text-gray-500 text-[9px] uppercase tracking-widest font-semibold mt-0.5">{label}</div>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap gap-3 justify-center mb-12">
+        <div className="flex flex-wrap gap-2.5 mb-8">
           {categories.map((tab) => {
             const Icon = tab.icon;
             const active = activeTab === tab.id;
@@ -98,38 +122,38 @@ export default function Faq() {
                   setActiveTab(tab.id);
                   setOpenIndex(0);
                 }}
-                className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                   active
-                    ? 'bg-yellow-400 text-black shadow-[0_0_20px_rgba(212,175,55,0.3)]'
-                    : 'bg-white/5 text-gray-400 hover:text-white border border-white/10'
+                    ? 'bg-[#D4AF37] text-black shadow-[0_0_20px_rgba(212,175,55,0.3)]'
+                    : 'bg-white/[0.03] text-gray-400 hover:text-white border border-white/[0.08]'
                 }`}
               >
-                <Icon size={16} />
+                <Icon size={15} />
                 {tab.label}
               </button>
             );
           })}
         </div>
 
-        {/* FAQs Accordion */}
-        <div className="space-y-4 mb-16">
+        {/* FAQs 2-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start mb-20">
           {faqs[activeTab].map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={faq.q}
-                className="bg-[#0e0e1a]/80 border border-white/10 rounded-2xl overflow-hidden transition-colors hover:border-white/20"
+                className="bg-[#0e0e1a]/80 border border-white/10 rounded-2xl overflow-hidden transition-colors hover:border-[#D4AF37]/30"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                  className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 cursor-pointer"
+                  className="w-full text-left px-5 py-4 flex items-center justify-between gap-3 cursor-pointer"
                 >
-                  <span className="font-bold text-white text-sm sm:text-base">{faq.q}</span>
+                  <span className="font-bold text-white text-sm sm:text-base leading-snug">{faq.q}</span>
                   <FiChevronDown
-                    className={`text-yellow-400 transition-transform duration-300 flex-shrink-0 ${
+                    className={`text-[#D4AF37] transition-transform duration-300 flex-shrink-0 ${
                       isOpen ? 'rotate-180' : ''
                     }`}
-                    size={18}
+                    size={17}
                   />
                 </button>
                 <AnimatePresence>
@@ -138,9 +162,9 @@ export default function Faq() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      <div className="px-6 pb-6 pt-1 text-sm text-gray-400 border-t border-white/5 leading-relaxed">
+                      <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-gray-400 border-t border-white/5 leading-relaxed">
                         {faq.a}
                       </div>
                     </motion.div>
@@ -151,29 +175,37 @@ export default function Faq() {
           })}
         </div>
 
-        {/* Need more help */}
-        <div className="bg-[#121224] border border-white/10 rounded-3xl p-8 text-center space-y-4">
-          <h3 className="text-xl font-bold text-white">Still have questions?</h3>
-          <p className="text-xs sm:text-sm text-gray-400 max-w-md mx-auto">
-            Our customer grievance and support desk is available to resolve any query within 24 hours.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center pt-2">
+      </div>
+
+      {/* ─── FULL SCREEN CTA SECTION (NOT A CARD) ─── */}
+      <section className="w-full bg-gradient-to-r from-[#0d0d18] via-[#121226] to-[#0d0d18] border-t border-white/[0.08] py-14 px-4 sm:px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03] pointer-events-none" />
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10 text-center md:text-left">
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 text-[#D4AF37] text-xs font-mono font-bold uppercase tracking-widest">
+              <span>●</span> Still Have Questions?
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">We're here to assist you 24/7</h3>
+            <p className="text-sm text-gray-400 max-w-xl">
+              Connect directly with our Bangalore support desk for prompt ticket queries and payment verification.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-4 justify-center md:justify-end flex-shrink-0">
             <Link
               to="/contact"
-              className="px-6 py-3 rounded-xl bg-yellow-400 text-black font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-opacity"
+              className="px-6 py-3.5 rounded-xl bg-[#D4AF37] text-black font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-opacity shadow-[0_0_25px_rgba(212,175,55,0.25)]"
             >
-              Contact Support
+              Contact Support Desk
             </Link>
             <Link
               to="/refund-policy"
-              className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-semibold text-xs uppercase tracking-wider hover:bg-white/10 transition-colors"
+              className="px-6 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.1] text-white font-semibold text-xs uppercase tracking-wider hover:bg-white/10 transition-colors"
             >
-              View Refund Policy
+              Refund Policy
             </Link>
           </div>
         </div>
-
-      </div>
+      </section>
     </div>
   );
 }

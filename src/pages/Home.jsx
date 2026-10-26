@@ -72,68 +72,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* ─── ORIGINAL HERO SECTION (PRESERVED AS REQUESTED):
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentImageIndex}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.2, ease: "linear" }}
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={{
-                backgroundImage: `url(${heroImages[currentImageIndex]})`,
-                imageRendering: 'auto',
-              }}
-            >
-              <div className="absolute inset-0 bg-black/20" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#030305] via-transparent to-transparent opacity-60" />
-            </motion.div>
-          </AnimatePresence>
-          <div className="hero-rings opacity-30" />
-          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-3 z-10">
-            {heroImages.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentImageIndex(i)}
-                className={`w-2 h-2 rounded-full transition-all duration-500 ${currentImageIndex === i ? 'bg-yellow-400 w-8' : 'bg-white/20'}`}
-              />
-            ))}
-          </div>
-        </div>
-        <motion.div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-32 pb-20 text-center">
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 mb-8">
-            <span className="live-badge">QUARTERLY DRAWS</span>
-            <span className="text-gray-500 text-sm">Next Mega Draw</span>
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }} className="font-display font-black leading-tight">
-            <span className="block text-white text-5xl sm:text-7xl md:text-9xl mb-2 tracking-tighter">Play Smart.</span>
-            <span className="block gradient-text text-6xl sm:text-8xl md:text-9xl neon-text-gold tracking-tight italic">Win Big</span>
-            <span className="block text-white/90 text-3xl sm:text-5xl md:text-6xl mt-4 font-light">Experience the Mega Draw 2026</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="text-gray-400 text-lg sm:text-xl mt-6 max-w-2xl mx-auto">
-            India's #1 premier lucky draw platform — transparent draws, real prizes, real winners. Bikes, phones, TVs, AC and more await!
-          </motion.p>
-          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.7 }} className="mt-10 mb-8">
-            <p className="text-gray-500 text-sm uppercase tracking-widest mb-2">Total Prize Pool This Month</p>
-            <JackpotCounter />
-          </motion.div>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/diamond" className="btn-gold px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase inline-flex items-center justify-center gap-2">
-              <GiDiamonds /> Explore Diamond Series
-            </Link>
-            <Link to="/alfa-beta" className="btn-outline-gold px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase inline-flex items-center justify-center gap-2">
-              Explore Alfa Beta Plans
-            </Link>
-          </motion.div>
-        </motion.div>
-      </section>
-      ─── END ORIGINAL HERO SECTION ─── */}
-
       {/* ─── RECREATED EXECUTIVE LUXURY HERO COCKPIT ─── */}
-      <section className="relative min-h-[92vh] flex items-center pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center pt-24 pb-14 lg:pt-32 lg:pb-20 overflow-hidden">
         {/* Ambient Film Background & Horizon Lighting */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <AnimatePresence mode="wait">
@@ -182,29 +122,29 @@ export default function Home() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="lg:col-span-7 text-left space-y-6"
+              className="lg:col-span-7 text-left space-y-5"
             >
               {/* Institutional Live Status Pill */}
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.03] border border-[#D4AF37]/30 backdrop-blur-md">
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-full bg-white/[0.03] border border-[#D4AF37]/30 backdrop-blur-md">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                 </span>
-                <span className="text-[#D4AF37] text-[11px] font-bold uppercase tracking-[0.2em]">
+                <span className="text-[#D4AF37] text-[10px] font-bold uppercase tracking-[0.2em]">
                   Live Digital Contests • Round 2026 Open
                 </span>
               </div>
 
               {/* Commanding Luxury Headline */}
-              <h1 className="font-display text-4xl sm:text-6xl lg:text-[4.25rem] font-black text-white leading-[1.08] tracking-tight">
+              <h1 className="font-display text-3xl sm:text-5xl lg:text-[3.25rem] font-black text-white leading-[1.12] tracking-tight">
                 Where Integrity Meets{' '}
                 <span className="gradient-text italic font-serif">Extraordinary</span>{' '}
                 Rewards.
               </h1>
 
               {/* Executive Subtitle Narrative */}
-              <p className="text-gray-300/80 text-base sm:text-lg max-w-2xl font-light leading-relaxed">
-                India’s premier certified reward platform. Experience cryptographically transparent draws starting from <span className="text-white font-medium">₹101</span>, with instant Razorpay checkout, live countdown telemetry, and guaranteed insured pan-India deliveries.
+              <p className="text-gray-300/80 text-sm sm:text-base max-w-xl font-light leading-relaxed">
+                India’s premier certified reward platform. Tamper-proof PRNG draws from <span className="text-white font-medium">₹101</span> with instant Razorpay checkout and guaranteed insured delivery.
               </p>
 
               {/* Action Buttons */}

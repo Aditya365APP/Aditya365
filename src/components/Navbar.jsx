@@ -8,8 +8,8 @@ const navLinks = [
   { to: '/diamond', label: 'Diamond' },
   { to: '/alfa-beta', label: 'Alfa Beta' },
   { to: '/winners', label: 'Winners' },
-  { to: '/leaderboard', label: 'Leaderboard' },
   { to: '/about', label: 'About' },
+  { to: '/contact', label: 'Contact Us' },
 ];
 
 export default function Navbar() {
@@ -60,7 +60,7 @@ export default function Navbar() {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`nav-link ${location.pathname === link.to ? 'active text-yellow-400' : ''}`}
+                className={`nav-link ${(location.pathname === link.to || (link.to === '/winners' && location.pathname === '/leaderboard')) ? 'active text-yellow-400' : ''}`}
               >
                 {link.label}
               </Link>
@@ -98,7 +98,7 @@ export default function Navbar() {
                   <Link
                     key={link.to}
                     to={link.to}
-                    className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all ${location.pathname === link.to
+                    className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all ${(location.pathname === link.to || (link.to === '/winners' && location.pathname === '/leaderboard'))
                         ? 'bg-yellow-400/10 text-yellow-400'
                         : 'text-gray-300 hover:text-white hover:bg-white/5'
                       }`}

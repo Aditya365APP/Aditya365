@@ -17,8 +17,7 @@ const footerLinks = {
   ],
   'Company': [
     { label: 'About Us', to: '/about' },
-    { label: 'Winners Board', to: '/winners' },
-    { label: 'Leaderboard', to: '/leaderboard' },
+    { label: 'Winners', to: '/winners' },
     { label: 'Contact Us', to: '/contact' },
   ],
   'Support': [

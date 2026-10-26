@@ -45,21 +45,45 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen pt-28 pb-20 text-gray-300">
+    <div className="min-h-screen pt-20 pb-20 text-gray-300 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
-        {/* Header */}
-        <div className="text-center mb-16">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-xs font-semibold uppercase tracking-widest mb-4">
-              <FiMessageSquare size={14} /> 24/7 Dedicated Support
+        {/* ─── COMPACT PAGE HERO ─── */}
+        <div className="pt-6 pb-10">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45 }}
+            className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4"
+          >
+            {/* Left */}
+            <div>
+              <div className="inline-flex items-center gap-2 bg-[#D4AF37]/10 border border-[#D4AF37]/25 px-3.5 py-1 rounded-full mb-3">
+                <FiMessageSquare className="text-[#D4AF37] text-xs" />
+                <span className="text-[#D4AF37] text-[10px] font-bold uppercase tracking-[0.22em] font-mono">24/7 Dedicated Support</span>
+                <span className="text-[9px] text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-1.5 py-0.5 rounded-full font-semibold">Online</span>
+              </div>
+              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-none text-white">
+                Contact <span className="gradient-text">Support</span>
+              </h1>
+              <p className="text-gray-400 text-sm mt-2 max-w-lg leading-relaxed">
+                Dedicated Bangalore support desk for bookings, draw verification, and immediate assistance.
+              </p>
             </div>
-            <h1 className="font-display text-4xl sm:text-6xl font-black text-white mb-4 tracking-tight">
-              Contact <span className="gradient-text">Aditya 365</span>
-            </h1>
-            <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
-              Have questions regarding ticket bookings, draw results, or payment verification? Our dedicated support team is here to assist you around the clock.
-            </p>
+
+            {/* Right: metrics */}
+            <div className="flex gap-5 sm:gap-7 flex-shrink-0">
+              {[
+                { label: 'Avg Response', value: '< 15m' },
+                { label: 'Availability', value: '24/7' },
+                { label: 'Resolution', value: '99.4%' },
+              ].map(({ label, value }) => (
+                <div key={label} className="text-center">
+                  <div className="text-lg sm:text-xl font-black font-mono text-[#D4AF37] leading-none">{value}</div>
+                  <div className="text-gray-500 text-[9px] uppercase tracking-widest font-semibold mt-0.5">{label}</div>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </div>
 

@@ -20,24 +20,35 @@ export default function Privacy() {
   ];
 
   return (
-    <div className="min-h-screen pt-28 pb-20 text-gray-300">
+    <div className="min-h-screen pt-20 pb-20 text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Header Hero */}
-        <div className="text-center mb-16">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-xs font-semibold uppercase tracking-widest mb-4">
-              <FiLock size={14} /> Data Protection & Privacy
+        <div className="pt-6 pb-10">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45 }}
+            className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4"
+          >
+            <div>
+              <div className="inline-flex items-center gap-2 bg-[#D4AF37]/10 border border-[#D4AF37]/25 px-3.5 py-1 rounded-full mb-3">
+                <FiLock className="text-[#D4AF37] text-xs" />
+                <span className="text-[#D4AF37] text-[10px] font-bold uppercase tracking-[0.22em] font-mono">Data Protection</span>
+                <span className="text-[9px] text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-1.5 py-0.5 rounded-full font-semibold">256-Bit SSL</span>
+              </div>
+              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-none text-white">
+                Privacy <span className="gradient-text">Policy</span>
+              </h1>
+              <p className="text-gray-400 text-sm mt-2 max-w-xl leading-relaxed">
+                How Aditya 365 protects personal records, transaction privacy, and digital security.
+              </p>
             </div>
-            <h1 className="font-display text-4xl sm:text-6xl font-black text-white mb-4 tracking-tight">
-              Privacy <span className="gradient-text">Policy</span>
-            </h1>
-            <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
-              Your trust is our paramount asset. Discover how Aditya 365 safeguards your personal data, transaction security, and digital privacy.
-            </p>
-            <p className="text-xs text-yellow-500/80 mt-3 font-mono">
-              Last Updated & Effective Date: {lastUpdated}
-            </p>
+            <div className="text-left sm:text-right flex-shrink-0">
+              <span className="text-[11px] font-mono text-[#D4AF37] bg-white/[0.03] border border-white/[0.08] px-3 py-1.5 rounded-xl inline-block">
+                Effective: {lastUpdated}
+              </span>
+            </div>
           </motion.div>
         </div>
 
