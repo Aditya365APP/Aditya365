@@ -13,6 +13,7 @@
     "axios": "^1.13.6",
     "classnames": "^2.5.1",
     "framer-motion": "^12.37.0",
+    "qrcode": "^1.5.4",
     "react": "^19.2.4",
     "react-countup": "^6.5.3",
     "react-dom": "^19.2.4",
